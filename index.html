@@ -1,10 +1,10 @@
 <!-- pac.africa — holding page / countdown
      Design tokens sourced from jobs.pac.africa token sheet.
-     EDIT THE LAUNCH DATE ON LINE ~470 (const LAUNCH_TARGET). -->
+     EDIT THE LAUNCH DATE ON LINE ~520 (const LAUNCH_TARGET). -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..800;1,400..800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
 <style>
 /* ─────────────────────────────────────────────
@@ -111,7 +111,7 @@ a { color: inherit; }
 }
 
 /* ─────────────────────────────────────────────
-   AMBIENT BACKGROUND
+   AMBIENT BACKGROUND & COMETS
    ───────────────────────────────────────────── */
 .ambient {
   position: fixed;
@@ -140,6 +140,35 @@ a { color: inherit; }
   opacity: var(--grain-opacity);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
+
+.comets {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.comet {
+  position: absolute;
+  width: 2px;
+  height: 140px;
+  background: linear-gradient(to bottom, rgba(232,83,46,0) 0%, var(--accent) 100%);
+  border-radius: 99px;
+  transform: rotate(55deg);
+  opacity: 0;
+  filter: drop-shadow(0 0 6px var(--accent));
+}
+
+@keyframes shooting-comet {
+  0% { transform: translate(-10vw, -20vh) rotate(55deg); opacity: 1; }
+  100% { transform: translate(110vw, 90vh) rotate(55deg); opacity: 0; }
+}
+
+.c1 { top: 10%; left: 15%; animation: shooting-comet 6s linear infinite 0s; }
+.c2 { top: -20%; left: 45%; animation: shooting-comet 4.5s linear infinite 2.5s; }
+.c3 { top: 30%; left: -10%; animation: shooting-comet 7s linear infinite 1.2s; }
+.c4 { top: -10%; left: 80%; animation: shooting-comet 5s linear infinite 4s; }
 
 /* ─────────────────────────────────────────────
    LAYOUT
@@ -171,34 +200,29 @@ a { color: inherit; }
 .brand {
   display: flex;
   align-items: center;
-  gap: var(--s5);
   font-size: var(--fs-sm);
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  font-weight: 600;
 }
 
-.brand-mark {
-  width: 26px; height: 26px;
-  border-radius: 7px;
-  background: var(--accent);
-  display: grid; place-items: center;
-  color: #fff;
-  font-family: var(--font-display);
-  font-size: 15px;
+.brand-logo-text {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-left: 6px;
+  margin-right: 12px;
   line-height: 1;
-  flex: none;
 }
 
 .brand-rule {
   width: 1px; height: 18px;
   background: var(--border-hair);
+  margin-right: 12px;
 }
 
 .brand-sub {
   color: var(--text-secondary);
   letter-spacing: .1em;
-  font-weight: 400;
+  text-transform: uppercase;
+  font-weight: 600;
   font-size: var(--fs-xs);
 }
 
@@ -226,6 +250,8 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  text-align: center;
   padding: clamp(40px, 9vh, 88px) 0;
 }
 
@@ -233,7 +259,7 @@ main {
   display: inline-flex;
   align-items: center;
   gap: var(--s4);
-  align-self: flex-start;
+  align-self: center;
   padding: var(--s2) var(--s6) var(--s2) var(--s4);
   border-radius: var(--r-sm);
   background: var(--surface-clay);
@@ -264,7 +290,7 @@ h1 {
   font-size: clamp(38px, 7.2vw, var(--fs-2xl));
   line-height: 1.03;
   letter-spacing: -.015em;
-  margin: 0 0 var(--s7);
+  margin: 0 auto var(--s7);
   max-width: 15ch;
 }
 h1 em {
@@ -277,7 +303,7 @@ h1 em {
   line-height: 1.55;
   color: var(--text-secondary);
   max-width: 52ch;
-  margin: 0 0 clamp(32px, 5vh, 52px);
+  margin: 0 auto clamp(32px, 5vh, 52px);
 }
 
 /* ── COUNTDOWN ── */
@@ -291,6 +317,7 @@ h1 em {
 
 .countdown {
   display: flex;
+  justify-content: center;
   gap: var(--s6);
   flex-wrap: wrap;
   margin-bottom: clamp(36px, 6vh, 60px);
@@ -361,6 +388,9 @@ h1 em {
   background: var(--surface-clay);
   box-shadow: var(--clay-shadow);
   border: 1px solid var(--border-hair);
+  text-align: left;
+  width: 100%;
+  max-width: 860px;
   transition: box-shadow var(--d-fast) var(--ease),
               transform var(--d-fast) var(--ease);
 }
@@ -483,20 +513,35 @@ footer a:hover { color: var(--accent); }
   }
   .reveal { opacity: 1; transform: none; }
   .ambient { animation: none; }
+  .comets { display: none; }
 }
 </style>
 
 <div class="ambient" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
 
+<!-- Adding the Comets layer here -->
+<div class="comets" aria-hidden="true">
+  <div class="comet c1"></div>
+  <div class="comet c2"></div>
+  <div class="comet c3"></div>
+  <div class="comet c4"></div>
+</div>
+
 <div class="shell">
 
   <nav class="nav reveal d1" aria-label="Primary">
     <div class="brand">
-      <span class="brand-mark" aria-hidden="true">P</span>
-      <span>PAC Africa</span>
+      <!-- Replicating the stylized figure logo from the new site -->
+      <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="5" r="2.5" fill="var(--accent)" stroke="none" />
+        <path d="M5 10l7 4.5 7-4.5" stroke="currentColor" />
+        <path d="M7 21l5-7 5 7" stroke="var(--accent)" />
+      </svg>
+      <span class="brand-logo-text">PAC</span>
+      
       <span class="brand-rule" aria-hidden="true"></span>
-      <span class="brand-sub">Priority Activator Consulting</span>
+      <span class="brand-sub">Jobs</span>
     </div>
     <button class="theme-btn" id="themeBtn" type="button"
             aria-label="Switch to light theme">
@@ -520,9 +565,7 @@ footer a:hover { color: var(--accent); }
     </h1>
 
     <p class="lede reveal d3">
-      We are rebuilding from the ground up on a faster, more secure
-      foundation. Same team, same work, considerably better craft.
-      Our job board is already live on the new stack.
+      We're upgrading our entire platform for a faster, more seamless experience. The same dedicated team is behind it, delivering a much higher standard of quality. Want a preview? Our job board is already running on the new setup.
     </p>
 
     <p class="countdown-label reveal d4">Launching in</p>
@@ -585,7 +628,7 @@ footer a:hover { color: var(--accent); }
      SET YOUR LAUNCH DATE HERE
      Format: "YYYY-MM-DDTHH:mm:ss+03:00"  (EAT)
      ══════════════════════════════════════════ */
-  const LAUNCH_TARGET = "2026-09-30T09:00:00+03:00";
+  const LAUNCH_TARGET = "2026-08-23T09:00:00+03:00";
 
   const target = new Date(LAUNCH_TARGET).getTime();
   const fields = {
