@@ -1,6 +1,6 @@
 <!-- pac.africa — holding page / countdown
      Design tokens sourced from jobs.pac.africa token sheet.
-     EDIT THE LAUNCH DATE ON LINE ~520 (const LAUNCH_TARGET). -->
+     EDIT THE LAUNCH DATE ON LINE ~450 (const LAUNCH_TARGET). -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -203,13 +203,10 @@ a { color: inherit; }
   font-size: var(--fs-sm);
 }
 
-.brand-logo-text {
-  font-size: 24px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  margin-left: 6px;
+.brand-logo-img {
+  height: 30px;
+  width: auto;
   margin-right: 12px;
-  line-height: 1;
 }
 
 .brand-rule {
@@ -315,66 +312,13 @@ h1 em {
   margin-bottom: var(--s6);
 }
 
-.countdown {
-  display: flex;
-  justify-content: center;
-  gap: var(--s6);
-  flex-wrap: wrap;
-  margin-bottom: clamp(36px, 6vh, 60px);
-}
-
-.unit {
-  position: relative;
-  flex: 1 1 118px;
-  min-width: 96px;
-  padding: var(--s8) var(--s6) var(--s7);
-  border-radius: var(--r-xs);
-  background: var(--surface-clay);
-  box-shadow: var(--clay-shadow);
-  border: 1px solid var(--border-hair);
-  text-align: center;
-  overflow: hidden;
-  transition: box-shadow var(--d-fast) var(--ease),
-              transform var(--d-fast) var(--ease);
-}
-
-.unit::after {
-  content: "";
-  position: absolute;
-  left: var(--s7); right: var(--s7); bottom: 0;
-  height: 2px;
-  background: var(--accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  opacity: .55;
-  transition: transform var(--d-settle) var(--ease);
-}
-.unit.tick::after { transform: scaleX(1); }
-
-.unit-value {
-  display: block;
+.countdown-single {
   font-family: var(--font-display);
-  font-size: clamp(34px, 6.6vw, 54px);
-  line-height: 1;
-  letter-spacing: -.02em;
+  font-size: clamp(28px, 5vw, 42px);
+  text-align: center;
+  margin-bottom: clamp(36px, 6vh, 60px);
   font-variant-numeric: tabular-nums;
-  margin-bottom: var(--s5);
-}
-
-.unit-value.tick {
-  animation: settle var(--d-settle) var(--ease);
-}
-@keyframes settle {
-  0%   { transform: translateY(-7px); opacity: .18; }
-  55%  { transform: translateY(1.5px); opacity: 1; }
-  100% { transform: translateY(0);     opacity: 1; }
-}
-
-.unit-name {
-  font-size: var(--fs-xs);
-  letter-spacing: .17em;
-  text-transform: uppercase;
-  color: var(--text-secondary);
+  letter-spacing: 0.02em;
 }
 
 /* ── SNEAK PEEK CARD ── */
@@ -498,8 +442,6 @@ footer a:hover { color: var(--accent); }
   .shell { padding: var(--s6); }
   .nav { padding: var(--s4) var(--s5); }
   .brand-rule, .brand-sub { display: none; }
-  .countdown { gap: var(--s5); }
-  .unit { flex: 1 1 calc(50% - var(--s5)); padding: var(--s7) var(--s5) var(--s6); }
   .peek { gap: var(--s7); }
   .cta { width: 100%; justify-content: center; }
 }
@@ -532,16 +474,10 @@ footer a:hover { color: var(--accent); }
 
   <nav class="nav reveal d1" aria-label="Primary">
     <div class="brand">
-      <!-- Replicating the stylized figure logo from the new site -->
-      <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="12" cy="5" r="2.5" fill="var(--accent)" stroke="none" />
-        <path d="M5 10l7 4.5 7-4.5" stroke="currentColor" />
-        <path d="M7 21l5-7 5 7" stroke="var(--accent)" />
-      </svg>
-      <span class="brand-logo-text">PAC</span>
+      <img src="pac-logo.webp" alt="PAC Africa Logo" class="brand-logo-img">
       
       <span class="brand-rule" aria-hidden="true"></span>
-      <span class="brand-sub">Jobs</span>
+      <span class="brand-sub">Priority Activator Consulting</span>
     </div>
     <button class="theme-btn" id="themeBtn" type="button"
             aria-label="Switch to light theme">
@@ -557,36 +493,22 @@ footer a:hover { color: var(--accent); }
   <main>
     <span class="eyebrow reveal d2">
       <span class="pulse" aria-hidden="true"></span>
-      Rebuilding
+      Redesigning
     </span>
 
     <h1 class="reveal d2">
-      The new pac.africa is <em>almost here</em>
+      <em>PAC Africa</em> Is Almost Here
     </h1>
 
     <p class="lede reveal d3">
-      We're upgrading our entire platform for a faster, more seamless experience. The same dedicated team is behind it, delivering a much higher standard of quality. Want a preview? Our job board is already running on the new setup.
+      We're upgrading our entire platform for a faster, more seamless & immersive experience. The same dedicated team is behind it, delivering a much higher standard of quality. Want a preview? Our job board is already running on the new setup.
     </p>
 
     <p class="countdown-label reveal d4">Launching in</p>
 
-    <div class="countdown reveal d4" role="timer" aria-live="off"
-         aria-label="Time remaining until launch">
-      <div class="unit">
-        <span class="unit-value" id="d">00</span>
-        <span class="unit-name">Days</span>
-      </div>
-      <div class="unit">
-        <span class="unit-value" id="h">00</span>
-        <span class="unit-name">Hours</span>
-      </div>
-      <div class="unit">
-        <span class="unit-value" id="m">00</span>
-        <span class="unit-name">Minutes</span>
-      </div>
-      <div class="unit">
-        <span class="unit-value" id="s">00</span>
-        <span class="unit-name">Seconds</span>
+    <div class="countdown reveal d4" role="timer" aria-live="off" aria-label="Time remaining until launch">
+      <div class="countdown-single" id="countdown-text">
+        00 Days : 00 Hours : 00 Minutes : 00 Seconds
       </div>
     </div>
 
@@ -631,42 +553,15 @@ footer a:hover { color: var(--accent); }
   const LAUNCH_TARGET = "2026-08-23T12:00:00+03:00";
 
   const target = new Date(LAUNCH_TARGET).getTime();
-  const fields = {
-    d: document.getElementById("d"),
-    h: document.getElementById("h"),
-    m: document.getElementById("m"),
-    s: document.getElementById("s")
-  };
-  const prev = { d: null, h: null, m: null, s: null };
-  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const elText = document.getElementById("countdown-text");
 
   function pad(n) { return String(n).padStart(2, "0"); }
-
-  function paint(key, value) {
-    if (prev[key] === value) return;
-    const el = fields[key];
-    el.textContent = value;
-
-    if (!reduced && prev[key] !== null) {
-      const unit = el.closest(".unit");
-      el.classList.remove("tick");
-      unit.classList.remove("tick");
-      void el.offsetWidth;
-      el.classList.add("tick");
-      unit.classList.add("tick");
-      setTimeout(function () {
-        el.classList.remove("tick");
-        unit.classList.remove("tick");
-      }, 660);
-    }
-    prev[key] = value;
-  }
 
   function tick() {
     let diff = target - Date.now();
 
     if (diff <= 0) {
-      ["d", "h", "m", "s"].forEach(function (k) { paint(k, "00"); });
+      elText.textContent = "00 Days : 00 Hours : 00 Minutes : 00 Seconds";
       document.querySelector("h1").innerHTML = "The new pac.africa is <em>live</em>";
       document.querySelector(".countdown-label").textContent = "We are open";
       clearInterval(timer);
@@ -674,10 +569,12 @@ footer a:hover { color: var(--accent); }
     }
 
     const sec = Math.floor(diff / 1000);
-    paint("d", pad(Math.floor(sec / 86400)));
-    paint("h", pad(Math.floor(sec / 3600) % 24));
-    paint("m", pad(Math.floor(sec / 60) % 60));
-    paint("s", pad(sec % 60));
+    const d = pad(Math.floor(sec / 86400));
+    const h = pad(Math.floor(sec / 3600) % 24);
+    const m = pad(Math.floor(sec / 60) % 60);
+    const s = pad(sec % 60);
+    
+    elText.textContent = `${d} Days : ${h} Hours : ${m} Minutes : ${s} Seconds`;
   }
 
   tick();
