@@ -1,7 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
 <!-- pac.africa — holding page / countdown
      Design tokens sourced from jobs.pac.africa token sheet.
-     EDIT THE LAUNCH DATE ON LINE ~450 (const LAUNCH_TARGET). -->
+     EDIT THE LAUNCH DATE ON LINE ~465 (const LAUNCH_TARGET). -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PAC Africa — Coming Soon</title>
+<meta name="description" content="We're upgrading our entire platform for a faster, more seamless & immersive experience. Priority Activator Consulting, Westlands, Nairobi, Kenya.">
+<link rel="icon" type="image/webp" href="pac-logo.webp">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..800;1,400..800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -37,8 +45,8 @@
   --accent-dim: #b83d1e;
 }
 
-/* light theme */
-html[data-theme="light"] {
+/* light theme (default) */
+html, html[data-theme="light"] {
   --surface-base:   #f5f5f0;
   --surface-raised: #faf8f4;
   --surface-muted:  #ebe8e1;
@@ -59,8 +67,8 @@ html[data-theme="light"] {
   --grain-opacity: .035;
 }
 
-/* dark theme (default) */
-html, html[data-theme="dark"] {
+/* dark theme */
+html[data-theme="dark"] {
   --surface-base:   #000000;
   --surface-raised: #0a0a0a;
   --surface-muted:  #1a1a1a;
@@ -254,7 +262,7 @@ main {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: clamp(20px, 3vh, 32px) 0;
+  padding: clamp(24px, 4vh, 40px) 0;
 }
 
 .eyebrow {
@@ -271,7 +279,7 @@ main {
   letter-spacing: .13em;
   text-transform: uppercase;
   color: var(--text-secondary);
-  margin-bottom: var(--s4);
+  margin-bottom: var(--s5);
 }
 
 .pulse {
@@ -289,10 +297,10 @@ main {
 h1 {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(32px, 6vw, var(--fs-2xl));
+  font-size: clamp(34px, 6.5vw, var(--fs-2xl));
   line-height: 1.03;
   letter-spacing: -.015em;
-  margin: 0 auto var(--s4);
+  margin: 0 auto var(--s5);
   max-width: 15ch;
 }
 h1 em {
@@ -301,11 +309,11 @@ h1 em {
 }
 
 .lede {
-  font-size: var(--fs-sm);
+  font-size: var(--fs-md);
   line-height: 1.5;
   color: var(--text-secondary);
-  max-width: 48ch;
-  margin: 0 auto var(--s5);
+  max-width: 50ch;
+  margin: 0 auto var(--s6);
 }
 
 .hero-actions {
@@ -313,34 +321,32 @@ h1 em {
   align-items: center;
   justify-content: center;
   gap: var(--s6);
-  margin-bottom: var(--s5);
+  margin-bottom: var(--s6);
   flex-wrap: wrap;
 }
 
-/* ── COUNTDOWN (Optimized sizing to prevent clipping) ── */
+/* ── COUNTDOWN ── */
 .countdown-label {
   font-size: var(--fs-xs);
   letter-spacing: .15em;
   text-transform: uppercase;
   color: var(--text-secondary);
-  margin-bottom: var(--s2);
+  margin-bottom: var(--s3);
 }
 
 .countdown {
   display: flex;
   justify-content: center;
-  gap: var(--s4);
-  flex-wrap: nowrap;
-  margin-bottom: clamp(20px, 3vh, 30px);
-  width: 100%;
-  max-width: 500px;
+  gap: var(--s5);
+  flex-wrap: wrap;
+  margin-bottom: clamp(24px, 4vh, 36px);
 }
 
 .unit {
   position: relative;
-  flex: 1;
-  min-width: 70px;
-  padding: var(--s4) var(--s2) var(--s3);
+  flex: 1 1 90px;
+  min-width: 78px;
+  padding: var(--s5) var(--s3) var(--s4);
   border-radius: var(--r-xs);
   background: var(--surface-clay);
   box-shadow: var(--clay-shadow);
@@ -354,7 +360,7 @@ h1 em {
 .unit::after {
   content: "";
   position: absolute;
-  left: var(--s4); right: var(--s4); bottom: 0;
+  left: var(--s6); right: var(--s6); bottom: 0;
   height: 2px;
   background: var(--accent);
   transform: scaleX(0);
@@ -367,7 +373,7 @@ h1 em {
 .unit-value {
   display: block;
   font-family: var(--font-display);
-  font-size: clamp(24px, 4vw, 36px);
+  font-size: clamp(26px, 4.5vw, 40px);
   line-height: 1;
   letter-spacing: -.02em;
   font-variant-numeric: tabular-nums;
@@ -384,60 +390,10 @@ h1 em {
 }
 
 .unit-name {
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-secondary);
-}
-
-/* ── SNEAK PEEK CARD ── */
-.peek {
-  display: flex;
-  align-items: center;
-  gap: var(--s6);
-  flex-wrap: wrap;
-  padding: var(--s6);
-  border-radius: var(--r-xs);
-  background: var(--surface-clay);
-  box-shadow: var(--clay-shadow);
-  border: 1px solid var(--border-hair);
-  text-align: left;
-  width: 100%;
-  max-width: 820px;
-  transition: box-shadow var(--d-fast) var(--ease),
-              transform var(--d-fast) var(--ease);
-}
-.peek:hover {
-  box-shadow: var(--clay-shadow-lift);
-  transform: translateY(-3px);
-}
-
-.peek-body { flex: 1 1 280px; min-width: 240px; }
-
-.peek-tag {
-  display: inline-block;
   font-size: var(--fs-xs);
-  letter-spacing: .14em;
+  letter-spacing: .17em;
   text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: var(--s2);
-}
-
-.peek h2 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: var(--fs-xl);
-  line-height: 1.2;
-  margin: 0 0 var(--s2);
-  letter-spacing: -.01em;
-}
-
-.peek p {
-  margin: 0;
-  font-size: var(--fs-sm);
-  line-height: 1.5;
   color: var(--text-secondary);
-  max-width: 48ch;
 }
 
 .cta {
@@ -445,7 +401,7 @@ h1 em {
   align-items: center;
   gap: var(--s4);
   flex: none;
-  padding: var(--s4) var(--s6);
+  padding: var(--s5) var(--s8);
   border-radius: var(--r-sm);
   background: var(--accent);
   color: #fff;
@@ -477,8 +433,8 @@ footer {
   justify-content: space-between;
   gap: var(--s6);
   flex-wrap: wrap;
-  padding-top: var(--s5);
-  margin-top: var(--s5);
+  padding-top: var(--s6);
+  margin-top: var(--s6);
   border-top: 1px solid var(--border-hair);
   font-size: var(--fs-xs);
   color: var(--text-secondary);
@@ -511,9 +467,8 @@ footer a:hover { color: var(--accent); }
   .shell { padding: var(--s6); }
   .nav { padding: var(--s4) var(--s5); }
   .brand-rule, .brand-sub { display: none; }
-  .countdown { gap: var(--s2); }
-  .unit { min-width: 60px; padding: var(--s3) var(--s1); }
-  .peek { gap: var(--s5); }
+  .countdown { gap: var(--s4); }
+  .unit { flex: 1 1 calc(50% - var(--s4)); padding: var(--s4); }
   .cta { width: 100%; justify-content: center; }
 }
 
@@ -529,6 +484,8 @@ footer a:hover { color: var(--accent); }
   .particles { display: none; }
 }
 </style>
+</head>
+<body>
 
 <div class="ambient" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
@@ -558,8 +515,7 @@ footer a:hover { color: var(--accent); }
       <svg id="themeIcon" viewBox="0 0 24 24" fill="none"
            stroke="currentColor" stroke-width="1.9"
            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="4.2"></circle>
-        <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+        <path d="M20.5 14.3A8.6 8.6 0 1 1 9.7 3.5a6.9 6.9 0 0 0 10.8 10.8z"></path>
       </svg>
     </button>
   </nav>
@@ -575,7 +531,7 @@ footer a:hover { color: var(--accent); }
     </h1>
 
     <p class="lede reveal d3">
-      We're upgrading our entire platform for a faster, more seamless & immersive experience. The same dedicated team is behind it, same standard of quality. Want a preview? Our job board is already running on the new setup.
+      We're upgrading our entire platform for a faster, more seamless & immersive experience. The same dedicated team is behind it, same standard of quality[cite: 3]. Want a preview? Our job board is already running on the new setup.
     </p>
 
     <div class="hero-actions reveal d3">
@@ -602,33 +558,13 @@ footer a:hover { color: var(--accent); }
         </div>
         <div class="unit">
           <span class="unit-value" id="m">00</span>
-          <span class="unit-name">Mins</span>
+          <span class="unit-name">Minutes</span>
         </div>
         <div class="unit">
           <span class="unit-value" id="s">00</span>
-          <span class="unit-name">Secs</span>
+          <span class="unit-name">Seconds</span>
         </div>
       </div>
-    </div>
-
-    <div class="peek reveal d5">
-      <div class="peek-body">
-        <span class="peek-tag">Live now</span>
-        <h2>See where we are heading</h2>
-        <p>
-          jobs.pac.africa is running on the new platform today.
-          Vetted roles across Kenya and East Africa, built with the
-          same design system arriving here shortly.
-        </p>
-      </div>
-      <a class="cta" href="https://jobs.pac.africa/" rel="noopener">
-        Take a sneak peek
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-             stroke-width="2.4" stroke-linecap="round"
-             stroke-linejoin="round" aria-hidden="true">
-          <path d="M5 12h13M12 5l7 7-7 7"></path>
-        </svg>
-      </a>
     </div>
   </main>
 
@@ -704,7 +640,7 @@ footer a:hover { color: var(--accent); }
   tick();
   const timer = setInterval(tick, 1000);
 
-  /* ── Fully Working Theme Toggle (Dark Default) ── */
+  /* ── Theme Toggle (Light Default Auto-Load) ── */
   const htmlRoot = document.documentElement;
   const btn = document.getElementById("themeBtn");
   const icon = document.getElementById("themeIcon");
@@ -712,18 +648,20 @@ footer a:hover { color: var(--accent); }
   const SUN = '<circle cx="12" cy="12" r="4.2"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>';
   const MOON = '<path d="M20.5 14.3A8.6 8.6 0 1 1 9.7 3.5a6.9 6.9 0 0 0 10.8 10.8z"></path>';
 
-  let currentTheme = "dark";
+  let currentTheme = "light";
   htmlRoot.setAttribute("data-theme", currentTheme);
-  icon.innerHTML = SUN;
+  icon.innerHTML = MOON;
 
   btn.addEventListener("click", function () {
-    currentTheme = currentTheme === "dark" ? "light" : "dark";
+    currentTheme = currentTheme === "light" ? "dark" : "light";
     htmlRoot.setAttribute("data-theme", currentTheme);
-    icon.innerHTML = currentTheme === "dark" ? SUN : MOON;
+    icon.innerHTML = currentTheme === "light" ? MOON : SUN;
     btn.setAttribute(
       "aria-label",
-      currentTheme === "dark" ? "Switch to light theme" : "Switch to dark theme"
+      currentTheme === "light" ? "Switch to dark theme" : "Switch to light theme"
     );
   });
 })();
 </script>
+</body>
+</html>
