@@ -37,29 +37,8 @@
   --accent-dim: #b83d1e;
 }
 
-/* dark (default) */
-:root, [data-theme="dark"] {
-  --surface-base:   #000000;
-  --surface-raised: #0a0a0a;
-  --surface-muted:  #1a1a1a;
-  --surface-clay:   #1a1a1a;
-  --text-primary:   #f5f5f0;
-  --text-secondary: #8a8a8a;
-  --border-hair:    rgba(255,255,255,.06);
-  --clay-shadow:
-      8px 8px 16px rgba(0,0,0,.6),
-     -4px -4px 10px rgba(255,255,255,.03);
-  --clay-shadow-lift:
-     12px 12px 26px rgba(0,0,0,.72),
-     -5px -5px 14px rgba(255,255,255,.045);
-  --clay-press: inset 4px 4px 10px rgba(0,0,0,.55),
-                inset -3px -3px 8px rgba(255,255,255,.025);
-  --mesh-a: rgba(232,83,46,.13);
-  --mesh-b: rgba(232,83,46,.06);
-  --grain-opacity: .05;
-}
-
-[data-theme="light"] {
+/* light (default now) */
+:root, [data-theme="light"] {
   --surface-base:   #f5f5f0;
   --surface-raised: #faf8f4;
   --surface-muted:  #ebe8e1;
@@ -78,6 +57,27 @@
   --mesh-a: rgba(232,83,46,.16);
   --mesh-b: rgba(232,83,46,.07);
   --grain-opacity: .035;
+}
+
+[data-theme="dark"] {
+  --surface-base:   #000000;
+  --surface-raised: #0a0a0a;
+  --surface-muted:  #1a1a1a;
+  --surface-clay:   #1a1a1a;
+  --text-primary:   #f5f5f0;
+  --text-secondary: #8a8a8a;
+  --border-hair:    rgba(255,255,255,.06);
+  --clay-shadow:
+      8px 8px 16px rgba(0,0,0,.6),
+     -4px -4px 10px rgba(255,255,255,.03);
+  --clay-shadow-lift:
+     12px 12px 26px rgba(0,0,0,.72),
+     -5px -5px 14px rgba(255,255,255,.045);
+  --clay-press: inset 4px 4px 10px rgba(0,0,0,.55),
+                inset -3px -3px 8px rgba(255,255,255,.025);
+  --mesh-a: rgba(232,83,46,.13);
+  --mesh-b: rgba(232,83,46,.06);
+  --grain-opacity: .05;
 }
 
 /* ─────────────────────────────────────────────
@@ -111,7 +111,7 @@ a { color: inherit; }
 }
 
 /* ─────────────────────────────────────────────
-   AMBIENT BACKGROUND & COMETS
+   AMBIENT BACKGROUND & PARTICLES
    ───────────────────────────────────────────── */
 .ambient {
   position: fixed;
@@ -141,7 +141,8 @@ a { color: inherit; }
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-.comets {
+/* Floating Dynamic Dust / Particles Container */
+.particles {
   position: fixed;
   inset: 0;
   z-index: 1;
@@ -149,26 +150,39 @@ a { color: inherit; }
   overflow: hidden;
 }
 
-.comet {
+.particle {
   position: absolute;
-  width: 2px;
-  height: 140px;
-  background: linear-gradient(to bottom, rgba(232,83,46,0) 0%, var(--accent) 100%);
-  border-radius: 99px;
-  transform: rotate(55deg);
-  opacity: 0;
-  filter: drop-shadow(0 0 6px var(--accent));
+  background: var(--accent);
+  border-radius: 50%;
+  opacity: 0.35;
+  animation: float-up linear infinite;
 }
 
-@keyframes shooting-comet {
-  0% { transform: translate(-10vw, -20vh) rotate(55deg); opacity: 1; }
-  100% { transform: translate(110vw, 90vh) rotate(55deg); opacity: 0; }
+@keyframes float-up {
+  0% {
+    transform: translateY(105vh) translateX(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.6;
+  }
+  80% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-10vh) translateX(40px);
+    opacity: 0;
+  }
 }
 
-.c1 { top: 10%; left: 15%; animation: shooting-comet 6s linear infinite 0s; }
-.c2 { top: -20%; left: 45%; animation: shooting-comet 4.5s linear infinite 2.5s; }
-.c3 { top: 30%; left: -10%; animation: shooting-comet 7s linear infinite 1.2s; }
-.c4 { top: -10%; left: 80%; animation: shooting-comet 5s linear infinite 4s; }
+/* Individual particle variations for organic motion */
+.p1 { width: 4px; height: 4px; left: 10%; animation-duration: 12s; animation-delay: 0s; }
+.p2 { width: 3px; height: 3px; left: 25%; animation-duration: 16s; animation-delay: 3s; }
+.p3 { width: 5px; height: 5px; left: 40%; animation-duration: 10s; animation-delay: 1.5s; }
+.p4 { width: 2px; height: 2px; left: 55%; animation-duration: 18s; animation-delay: 5s; }
+.p5 { width: 4px; height: 4px; left: 70%; animation-duration: 14s; animation-delay: 2s; }
+.p6 { width: 3px; height: 3px; left: 85%; animation-duration: 11s; animation-delay: 4s; }
+.p7 { width: 5px; height: 5px; left: 92%; animation-duration: 15s; animation-delay: 0.5s; }
 
 /* ─────────────────────────────────────────────
    LAYOUT
@@ -249,7 +263,7 @@ main {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: clamp(40px, 9vh, 88px) 0;
+  padding: clamp(30px, 6vh, 60px) 0;
 }
 
 .eyebrow {
@@ -266,7 +280,7 @@ main {
   letter-spacing: .13em;
   text-transform: uppercase;
   color: var(--text-secondary);
-  margin-bottom: var(--s8);
+  margin-bottom: var(--s6);
 }
 
 .pulse {
@@ -287,7 +301,7 @@ h1 {
   font-size: clamp(38px, 7.2vw, var(--fs-2xl));
   line-height: 1.03;
   letter-spacing: -.015em;
-  margin: 0 auto var(--s7);
+  margin: 0 auto var(--s6);
   max-width: 15ch;
 }
 h1 em {
@@ -300,7 +314,17 @@ h1 em {
   line-height: 1.55;
   color: var(--text-secondary);
   max-width: 52ch;
-  margin: 0 auto clamp(32px, 5vh, 52px);
+  margin: 0 auto var(--s7);
+}
+
+/* ── HERO CTA ACTIONS ── */
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s6);
+  margin-bottom: var(--s7);
+  flex-wrap: wrap;
 }
 
 /* ── COUNTDOWN ── */
@@ -309,16 +333,69 @@ h1 em {
   letter-spacing: .15em;
   text-transform: uppercase;
   color: var(--text-secondary);
-  margin-bottom: var(--s6);
+  margin-bottom: var(--s4);
 }
 
-.countdown-single {
-  font-family: var(--font-display);
-  font-size: clamp(28px, 5vw, 42px);
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: var(--s5);
+  flex-wrap: wrap;
+  margin-bottom: clamp(32px, 5vh, 48px);
+}
+
+.unit {
+  position: relative;
+  flex: 1 1 100px;
+  min-width: 86px;
+  padding: var(--s6) var(--s4) var(--s5);
+  border-radius: var(--r-xs);
+  background: var(--surface-clay);
+  box-shadow: var(--clay-shadow);
+  border: 1px solid var(--border-hair);
   text-align: center;
-  margin-bottom: clamp(36px, 6vh, 60px);
+  overflow: hidden;
+  transition: box-shadow var(--d-fast) var(--ease),
+              transform var(--d-fast) var(--ease);
+}
+
+.unit::after {
+  content: "";
+  position: absolute;
+  left: var(--s6); right: var(--s6); bottom: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  opacity: .55;
+  transition: transform var(--d-settle) var(--ease);
+}
+.unit.tick::after { transform: scaleX(1); }
+
+.unit-value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(28px, 5vw, 44px);
+  line-height: 1;
+  letter-spacing: -.02em;
   font-variant-numeric: tabular-nums;
-  letter-spacing: 0.02em;
+  margin-bottom: var(--s3);
+}
+
+.unit-value.tick {
+  animation: settle var(--d-settle) var(--ease);
+}
+@keyframes settle {
+  0%   { transform: translateY(-7px); opacity: .18; }
+  55%  { transform: translateY(1.5px); opacity: 1; }
+  100% { transform: translateY(0);     opacity: 1; }
+}
+
+.unit-name {
+  font-size: var(--fs-xs);
+  letter-spacing: .17em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
 }
 
 /* ── SNEAK PEEK CARD ── */
@@ -442,6 +519,8 @@ footer a:hover { color: var(--accent); }
   .shell { padding: var(--s6); }
   .nav { padding: var(--s4) var(--s5); }
   .brand-rule, .brand-sub { display: none; }
+  .countdown { gap: var(--s4); }
+  .unit { flex: 1 1 calc(50% - var(--s4)); padding: var(--s5) var(--s4); }
   .peek { gap: var(--s7); }
   .cta { width: 100%; justify-content: center; }
 }
@@ -455,19 +534,22 @@ footer a:hover { color: var(--accent); }
   }
   .reveal { opacity: 1; transform: none; }
   .ambient { animation: none; }
-  .comets { display: none; }
+  .particles { display: none; }
 }
 </style>
 
 <div class="ambient" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
 
-<!-- Adding the Comets layer here -->
-<div class="comets" aria-hidden="true">
-  <div class="comet c1"></div>
-  <div class="comet c2"></div>
-  <div class="comet c3"></div>
-  <div class="comet c4"></div>
+<!-- Floating Dust / Particles layer -->
+<div class="particles" aria-hidden="true">
+  <div class="particle p1"></div>
+  <div class="particle p2"></div>
+  <div class="particle p3"></div>
+  <div class="particle p4"></div>
+  <div class="particle p5"></div>
+  <div class="particle p6"></div>
+  <div class="particle p7"></div>
 </div>
 
 <div class="shell">
@@ -475,17 +557,15 @@ footer a:hover { color: var(--accent); }
   <nav class="nav reveal d1" aria-label="Primary">
     <div class="brand">
       <img src="pac-logo.webp" alt="PAC Africa Logo" class="brand-logo-img">
-      
       <span class="brand-rule" aria-hidden="true"></span>
       <span class="brand-sub">Priority Activator Consulting</span>
     </div>
     <button class="theme-btn" id="themeBtn" type="button"
-            aria-label="Switch to light theme">
+            aria-label="Switch to dark theme">
       <svg id="themeIcon" viewBox="0 0 24 24" fill="none"
            stroke="currentColor" stroke-width="1.9"
            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="4.2"></circle>
-        <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+        <path d="M20.5 14.3A8.6 8.6 0 1 1 9.7 3.5a6.9 6.9 0 0 0 10.8 10.8z"></path>
       </svg>
     </button>
   </nav>
@@ -504,11 +584,36 @@ footer a:hover { color: var(--accent); }
       We're upgrading our entire platform for a faster, more seamless & immersive experience. The same dedicated team is behind it, delivering a much higher standard of quality. Want a preview? Our job board is already running on the new setup.
     </p>
 
-    <p class="countdown-label reveal d4">Launching in</p>
+    <div class="hero-actions reveal d3">
+      <a class="cta" href="https://jobs.pac.africa/" rel="noopener">
+        Browse active jobs
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2.4" stroke-linecap="round"
+             stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h13M12 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
 
-    <div class="countdown reveal d4" role="timer" aria-live="off" aria-label="Time remaining until launch">
-      <div class="countdown-single" id="countdown-text">
-        00 Days : 00 Hours : 00 Minutes : 00 Seconds
+    <div class="reveal d4">
+      <p class="countdown-label">Launching in</p>
+      <div class="countdown" role="timer" aria-live="off" aria-label="Time remaining until launch">
+        <div class="unit">
+          <span class="unit-value" id="d">00</span>
+          <span class="unit-name">Days</span>
+        </div>
+        <div class="unit">
+          <span class="unit-value" id="h">00</span>
+          <span class="unit-name">Hours</span>
+        </div>
+        <div class="unit">
+          <span class="unit-value" id="m">00</span>
+          <span class="unit-name">Minutes</span>
+        </div>
+        <div class="unit">
+          <span class="unit-value" id="s">00</span>
+          <span class="unit-name">Seconds</span>
+        </div>
       </div>
     </div>
 
@@ -553,15 +658,42 @@ footer a:hover { color: var(--accent); }
   const LAUNCH_TARGET = "2026-08-23T12:00:00+03:00";
 
   const target = new Date(LAUNCH_TARGET).getTime();
-  const elText = document.getElementById("countdown-text");
+  const fields = {
+    d: document.getElementById("d"),
+    h: document.getElementById("h"),
+    m: document.getElementById("m"),
+    s: document.getElementById("s")
+  };
+  const prev = { d: null, h: null, m: null, s: null };
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function pad(n) { return String(n).padStart(2, "0"); }
+
+  function paint(key, value) {
+    if (prev[key] === value) return;
+    const el = fields[key];
+    el.textContent = value;
+
+    if (!reduced && prev[key] !== null) {
+      const unit = el.closest(".unit");
+      el.classList.remove("tick");
+      unit.classList.remove("tick");
+      void el.offsetWidth;
+      el.classList.add("tick");
+      unit.classList.add("tick");
+      setTimeout(function () {
+        el.classList.remove("tick");
+        unit.classList.remove("tick");
+      }, 660);
+    }
+    prev[key] = value;
+  }
 
   function tick() {
     let diff = target - Date.now();
 
     if (diff <= 0) {
-      elText.textContent = "00 Days : 00 Hours : 00 Minutes : 00 Seconds";
+      ["d", "h", "m", "s"].forEach(function (k) { paint(k, "00"); });
       document.querySelector("h1").innerHTML = "The new pac.africa is <em>live</em>";
       document.querySelector(".countdown-label").textContent = "We are open";
       clearInterval(timer);
@@ -569,18 +701,16 @@ footer a:hover { color: var(--accent); }
     }
 
     const sec = Math.floor(diff / 1000);
-    const d = pad(Math.floor(sec / 86400));
-    const h = pad(Math.floor(sec / 3600) % 24);
-    const m = pad(Math.floor(sec / 60) % 60);
-    const s = pad(sec % 60);
-    
-    elText.textContent = `${d} Days : ${h} Hours : ${m} Minutes : ${s} Seconds`;
+    paint("d", pad(Math.floor(sec / 86400)));
+    paint("h", pad(Math.floor(sec / 3600) % 24));
+    paint("m", pad(Math.floor(sec / 60) % 60));
+    paint("s", pad(sec % 60));
   }
 
-  tick();
+    tick();
   const timer = setInterval(tick, 1000);
 
-  /* ── Theme toggle ── */
+  /* ── Theme toggle (Light default) ── */
   const root = document.documentElement;
   const btn = document.getElementById("themeBtn");
   const icon = document.getElementById("themeIcon");
@@ -588,7 +718,7 @@ footer a:hover { color: var(--accent); }
   const SUN = '<circle cx="12" cy="12" r="4.2"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>';
   const MOON = '<path d="M20.5 14.3A8.6 8.6 0 1 1 9.7 3.5a6.9 6.9 0 0 0 10.8 10.8z"></path>';
 
-  let theme = "dark";
+  let theme = "light";
   root.setAttribute("data-theme", theme);
 
   btn.addEventListener("click", function () {
