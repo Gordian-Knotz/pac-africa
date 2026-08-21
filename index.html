@@ -20,16 +20,16 @@
   /* type */
   --font-primary: "Instrument Sans", "Instrument Sans Fallback", system-ui, sans-serif;
   --font-display: "Instrument Serif", Georgia, serif;
-  --fs-xs: 12px;  --fs-sm: 14px;  --fs-md: 16px;
-  --fs-lg: 18px;  --fs-xl: 24px;  --fs-2xl: 60px;
-  --lh-base: 24px;
+  --fs-xs: 13px;  --fs-sm: 15px;  --fs-md: 18px;
+  --fs-lg: 21px;  --fs-xl: 28px;  --fs-2xl: clamp(42px, 7.5vw, 76px);
+  --lh-base: 1.5;
 
   /* spacing */
-  --s1: 4px;  --s2: 6px;  --s3: 8px;  --s4: 10px;
-  --s5: 12px; --s6: 16px; --s7: 20px; --s8: 24px;
+  --s1: 4px;  --s2: 8px;  --s3: 12px; --s4: 16px;
+  --s5: 20px; --s6: 24px; --s7: 32px; --s8: 40px;
 
   /* radius */
-  --r-xs: 16px;
+  --r-xs: 20px;
   --r-sm: 9999px;
 
   /* motion */
@@ -50,14 +50,14 @@ html, html[data-theme="light"] {
   --surface-muted:  #ebe8e1;
   --surface-clay:   #ffffff;
   --text-primary:   #0a0a0a;
-  --text-secondary: #6e6e6e;
+  --text-secondary: #5e5e5e;
   --border-hair:    rgba(0,0,0,.08);
   --clay-shadow:
-      8px 8px 20px rgba(0,0,0,.10),
-     -4px -4px 12px rgba(255,255,255,.9);
+      10px 10px 24px rgba(0,0,0,.09),
+     -5px -5px 16px rgba(255,255,255,.9);
   --clay-shadow-lift:
-     12px 12px 28px rgba(0,0,0,.14),
-     -5px -5px 16px rgba(255,255,255,1);
+     14px 14px 32px rgba(0,0,0,.13),
+     -6px -6px 18px rgba(255,255,255,1);
   --clay-press: inset 4px 4px 10px rgba(0,0,0,.08),
                 inset -3px -3px 8px rgba(255,255,255,.9);
   --mesh-a: rgba(232,83,46,.16);
@@ -72,14 +72,14 @@ html[data-theme="dark"] {
   --surface-muted:  #1a1a1a;
   --surface-clay:   #1a1a1a;
   --text-primary:   #f5f5f0;
-  --text-secondary: #8a8a8a;
+  --text-secondary: #9a9a9a;
   --border-hair:    rgba(255,255,255,.08);
   --clay-shadow:
-      8px 8px 16px rgba(0,0,0,.6),
-     -4px -4px 10px rgba(255,255,255,.03);
+      10px 10px 22px rgba(0,0,0,.6),
+     -5px -5px 14px rgba(255,255,255,.03);
   --clay-shadow-lift:
-     12px 12px 26px rgba(0,0,0,.72),
-     -5px -5px 14px rgba(255,255,255,.045);
+     14px 14px 30px rgba(0,0,0,.72),
+     -6px -6px 16px rgba(255,255,255,.045);
   --clay-press: inset 4px 4px 10px rgba(0,0,0,.55),
                 inset -3px -3px 8px rgba(255,255,255,.025);
   --mesh-a: rgba(232,83,46,.13);
@@ -190,8 +190,8 @@ a { color: inherit; }
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: var(--s8);
-  max-width: 1120px;
+  padding: var(--s7);
+  max-width: 1280px;
   margin: 0 auto;
 }
 
@@ -201,7 +201,7 @@ a { color: inherit; }
   align-items: center;
   justify-content: space-between;
   gap: var(--s6);
-  padding: var(--s5) var(--s7);
+  padding: var(--s4) var(--s7);
   border-radius: var(--r-xs);
   background: var(--surface-clay);
   box-shadow: var(--clay-shadow);
@@ -215,15 +215,15 @@ a { color: inherit; }
 }
 
 .brand-logo-img {
-  height: 30px;
+  height: 36px;
   width: auto;
-  margin-right: 12px;
+  margin-right: var(--s4);
 }
 
 .brand-rule {
-  width: 1px; height: 18px;
+  width: 1px; height: 20px;
   background: var(--border-hair);
-  margin-right: 12px;
+  margin-right: var(--s4);
 }
 
 .brand-sub {
@@ -239,7 +239,7 @@ a { color: inherit; }
   border: 1px solid var(--border-hair);
   background: var(--surface-muted);
   color: var(--text-secondary);
-  width: 38px; height: 38px;
+  width: 44px; height: 44px;
   border-radius: var(--r-sm);
   display: grid; place-items: center;
   cursor: pointer;
@@ -250,7 +250,7 @@ a { color: inherit; }
 }
 .theme-btn:hover { color: var(--accent); transform: translateY(-1px); }
 .theme-btn:active { box-shadow: var(--clay-press); transform: translateY(0); }
-.theme-btn svg { width: 17px; height: 17px; }
+.theme-btn svg { width: 19px; height: 19px; }
 
 /* ── MAIN ── */
 main {
@@ -260,28 +260,28 @@ main {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: clamp(24px, 4vh, 40px) 0;
+  padding: clamp(40px, 6vh, 80px) 0;
 }
 
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: var(--s4);
+  gap: var(--s3);
   align-self: center;
-  padding: var(--s2) var(--s6) var(--s2) var(--s4);
+  padding: var(--s2) var(--s6) var(--s2) var(--s5);
   border-radius: var(--r-sm);
   background: var(--surface-clay);
   box-shadow: var(--clay-shadow);
   border: 1px solid var(--border-hair);
   font-size: var(--fs-xs);
-  letter-spacing: .13em;
+  letter-spacing: .15em;
   text-transform: uppercase;
   color: var(--text-secondary);
-  margin-bottom: var(--s5);
+  margin-bottom: var(--s6);
 }
 
 .pulse {
-  width: 7px; height: 7px;
+  width: 8px; height: 8px;
   border-radius: 50%;
   background: var(--accent);
   flex: none;
@@ -289,17 +289,17 @@ main {
 }
 @keyframes pulse {
   0%, 100% { opacity: 1;   box-shadow: 0 0 0 0 rgba(232,83,46,.5); }
-  60%      { opacity: .55; box-shadow: 0 0 0 7px rgba(232,83,46,0); }
+  60%      { opacity: .55; box-shadow: 0 0 0 8px rgba(232,83,46,0); }
 }
 
 h1 {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(34px, 6.5vw, var(--fs-2xl));
-  line-height: 1.03;
-  letter-spacing: -.015em;
-  margin: 0 auto var(--s5);
-  max-width: 15ch;
+  font-size: var(--fs-2xl);
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  margin: 0 auto var(--s6);
+  max-width: 16ch;
 }
 h1 em {
   font-style: italic;
@@ -307,29 +307,29 @@ h1 em {
 }
 
 .lede {
-  font-size: var(--fs-md);
-  line-height: 1.5;
+  font-size: var(--fs-lg);
+  line-height: 1.6;
   color: var(--text-secondary);
-  max-width: 50ch;
-  margin: 0 auto var(--s6);
+  max-width: 62ch;
+  margin: 0 auto var(--s7);
 }
 
 .hero-actions {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--s6);
-  margin-bottom: var(--s6);
+  gap: var(--s5);
+  margin-bottom: var(--s8);
   flex-wrap: wrap;
 }
 
 /* ── COUNTDOWN ── */
 .countdown-label {
   font-size: var(--fs-xs);
-  letter-spacing: .15em;
+  letter-spacing: .18em;
   text-transform: uppercase;
   color: var(--text-secondary);
-  margin-bottom: var(--s3);
+  margin-bottom: var(--s4);
 }
 
 .countdown {
@@ -337,16 +337,15 @@ h1 em {
   justify-content: center;
   gap: var(--s5);
   flex-wrap: nowrap;
-  margin-bottom: clamp(24px, 4vh, 36px);
   width: 100%;
-  max-width: 520px;
+  max-width: 720px;
 }
 
 .unit {
   position: relative;
   flex: 1;
   min-width: 0;
-  padding: var(--s5) var(--s3) var(--s4);
+  padding: var(--s6) var(--s4) var(--s5);
   border-radius: var(--r-xs);
   background: var(--surface-clay);
   box-shadow: var(--clay-shadow);
@@ -360,12 +359,12 @@ h1 em {
 .unit::after {
   content: "";
   position: absolute;
-  left: var(--s6); right: var(--s6); bottom: 0;
-  height: 2px;
+  left: var(--s5); right: var(--s5); bottom: 0;
+  height: 3px;
   background: var(--accent);
   transform: scaleX(0);
   transform-origin: left;
-  opacity: .55;
+  opacity: .7;
   transition: transform var(--d-settle) var(--ease);
 }
 .unit.tick::after { transform: scaleX(1); }
@@ -373,27 +372,28 @@ h1 em {
 .unit-value {
   display: block;
   font-family: var(--font-display);
-  font-size: clamp(28px, 4.5vw, 42px);
+  font-size: clamp(40px, 6.5vw, 72px);
   line-height: 1;
   letter-spacing: -.02em;
   font-variant-numeric: tabular-nums;
-  margin-bottom: var(--s2);
+  margin-bottom: var(--s3);
 }
 
 .unit-value.tick {
   animation: settle var(--d-settle) var(--ease);
 }
 @keyframes settle {
-  0%   { transform: translateY(-7px); opacity: .18; }
-  55%  { transform: translateY(1.5px); opacity: 1; }
+  0%   { transform: translateY(-8px); opacity: .15; }
+  55%  { transform: translateY(2px); opacity: 1; }
   100% { transform: translateY(0);     opacity: 1; }
 }
 
 .unit-name {
   font-size: var(--fs-xs);
-  letter-spacing: .17em;
+  letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--text-secondary);
+  font-weight: 500;
 }
 
 .cta {
@@ -401,11 +401,11 @@ h1 em {
   align-items: center;
   gap: var(--s4);
   flex: none;
-  padding: var(--s5) var(--s8);
+  padding: var(--s5) var(--s7);
   border-radius: var(--r-sm);
   background: var(--accent);
   color: #fff;
-  font-size: var(--fs-sm);
+  font-size: var(--fs-md);
   font-weight: 600;
   letter-spacing: .01em;
   text-decoration: none;
@@ -421,10 +421,10 @@ h1 em {
 }
 .cta:active { transform: translateY(0); box-shadow: var(--clay-press); }
 .cta svg {
-  width: 14px; height: 14px;
+  width: 16px; height: 16px;
   transition: transform var(--d-fast) var(--ease);
 }
-.cta:hover svg { transform: translateX(3px); }
+.cta:hover svg { transform: translateX(4px); }
 
 /* ── FOOTER ── */
 footer {
@@ -434,11 +434,11 @@ footer {
   gap: var(--s6);
   flex-wrap: wrap;
   padding-top: var(--s6);
-  margin-top: var(--s6);
+  margin-top: var(--s7);
   border-top: 1px solid var(--border-hair);
   font-size: var(--fs-xs);
   color: var(--text-secondary);
-  letter-spacing: .04em;
+  letter-spacing: .05em;
 }
 footer a {
   text-decoration: none;
@@ -449,7 +449,7 @@ footer a:hover { color: var(--accent); }
 /* ── REVEAL ── */
 .reveal {
   opacity: 0;
-  transform: translateY(14px);
+  transform: translateY(16px);
   animation: rise var(--d-settle) var(--ease) forwards;
 }
 @keyframes rise {
@@ -464,11 +464,11 @@ footer a:hover { color: var(--accent); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 640px) {
-  .shell { padding: var(--s6); }
-  .nav { padding: var(--s4) var(--s5); }
+  .shell { padding: var(--s5); }
+  .nav { padding: var(--s3) var(--s4); }
   .brand-rule, .brand-sub { display: none; }
   .countdown { gap: var(--s3); max-width: 100%; }
-  .unit { min-width: 0; padding: var(--s4) var(--s2); }
+  .unit { padding: var(--s4) var(--s2); }
   .cta { width: 100%; justify-content: center; }
 }
 
@@ -524,7 +524,7 @@ footer a:hover { color: var(--accent); }
   <main>
     <span class="eyebrow reveal d2">
       <span class="pulse" aria-hidden="true"></span>
-      Redesigning
+      Redesigning Platform
     </span>
 
     <h1 class="reveal d2">
@@ -546,7 +546,7 @@ footer a:hover { color: var(--accent); }
       </a>
     </div>
 
-    <div class="reveal d4">
+    <div class="reveal d4" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
       <p class="countdown-label">Launching in</p>
       <div class="countdown" role="timer" aria-live="off" aria-label="Time remaining until launch">
         <div class="unit">
