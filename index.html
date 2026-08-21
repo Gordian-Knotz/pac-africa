@@ -37,8 +37,8 @@
   --accent-dim: #b83d1e;
 }
 
-/* light (default now) */
-:root, [data-theme="light"] {
+/* light theme */
+[data-theme="light"] {
   --surface-base:   #f5f5f0;
   --surface-raised: #faf8f4;
   --surface-muted:  #ebe8e1;
@@ -59,7 +59,8 @@
   --grain-opacity: .035;
 }
 
-[data-theme="dark"] {
+/* dark (default now) */
+:root, [data-theme="dark"] {
   --surface-base:   #000000;
   --surface-raised: #0a0a0a;
   --surface-muted:  #1a1a1a;
@@ -141,7 +142,7 @@ a { color: inherit; }
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Floating Dynamic Dust / Particles Container */
+/* Dense Floating Particles layer */
 .particles {
   position: fixed;
   inset: 0;
@@ -154,7 +155,6 @@ a { color: inherit; }
   position: absolute;
   background: var(--accent);
   border-radius: 50%;
-  opacity: 0.35;
   animation: float-up linear infinite;
 }
 
@@ -164,25 +164,28 @@ a { color: inherit; }
     opacity: 0;
   }
   20% {
-    opacity: 0.6;
+    opacity: 0.55;
   }
   80% {
-    opacity: 0.6;
+    opacity: 0.55;
   }
   100% {
-    transform: translateY(-10vh) translateX(40px);
+    transform: translateY(-10vh) translateX(50px);
     opacity: 0;
   }
 }
 
-/* Individual particle variations for organic motion */
-.p1 { width: 4px; height: 4px; left: 10%; animation-duration: 12s; animation-delay: 0s; }
-.p2 { width: 3px; height: 3px; left: 25%; animation-duration: 16s; animation-delay: 3s; }
-.p3 { width: 5px; height: 5px; left: 40%; animation-duration: 10s; animation-delay: 1.5s; }
-.p4 { width: 2px; height: 2px; left: 55%; animation-duration: 18s; animation-delay: 5s; }
-.p5 { width: 4px; height: 4px; left: 70%; animation-duration: 14s; animation-delay: 2s; }
-.p6 { width: 3px; height: 3px; left: 85%; animation-duration: 11s; animation-delay: 4s; }
-.p7 { width: 5px; height: 5px; left: 92%; animation-duration: 15s; animation-delay: 0.5s; }
+/* Extended organic particle set */
+.p1  { width: 4px; height: 4px; left: 5%;  animation-duration: 11s; animation-delay: 0s; }
+.p2  { width: 2px; height: 2px; left: 12%; animation-duration: 15s; animation-delay: 3s; }
+.p3  { width: 5px; height: 5px; left: 20%; animation-duration: 9s;  animation-delay: 1.5s; }
+.p4  { width: 3px; height: 3px; left: 31%; animation-duration: 13s; animation-delay: 4.2s; }
+.p5  { width: 4px; height: 4px; left: 42%; animation-duration: 16s; animation-delay: 2.1s; }
+.p6  { width: 2px; height: 2px; left: 50%; animation-duration: 10s; animation-delay: 5.5s; }
+.p7  { width: 5px; height: 5px; left: 61%; animation-duration: 12s; animation-delay: 0.8s; }
+.p8  { width: 3px; height: 3px; left: 73%; animation-duration: 14s; animation-delay: 3.4s; }
+.p9  { width: 4px; height: 4px; left: 82%; animation-duration: 11s; animation-delay: 1.2s; }
+.p10 { width: 2px; height: 2px; left: 91%; animation-duration: 17s; animation-delay: 4.8s; }
 
 /* ─────────────────────────────────────────────
    LAYOUT
@@ -263,7 +266,7 @@ main {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: clamp(30px, 6vh, 60px) 0;
+  padding: clamp(24px, 4vh, 40px) 0;
 }
 
 .eyebrow {
@@ -280,7 +283,7 @@ main {
   letter-spacing: .13em;
   text-transform: uppercase;
   color: var(--text-secondary);
-  margin-bottom: var(--s6);
+  margin-bottom: var(--s5);
 }
 
 .pulse {
@@ -298,10 +301,10 @@ main {
 h1 {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(38px, 7.2vw, var(--fs-2xl));
+  font-size: clamp(34px, 6.5vw, var(--fs-2xl));
   line-height: 1.03;
   letter-spacing: -.015em;
-  margin: 0 auto var(--s6);
+  margin: 0 auto var(--s5);
   max-width: 15ch;
 }
 h1 em {
@@ -310,11 +313,11 @@ h1 em {
 }
 
 .lede {
-  font-size: var(--fs-lg);
-  line-height: 1.55;
+  font-size: var(--fs-md);
+  line-height: 1.5;
   color: var(--text-secondary);
-  max-width: 52ch;
-  margin: 0 auto var(--s7);
+  max-width: 50ch;
+  margin: 0 auto var(--s6);
 }
 
 /* ── HERO CTA ACTIONS ── */
@@ -323,7 +326,7 @@ h1 em {
   align-items: center;
   justify-content: center;
   gap: var(--s6);
-  margin-bottom: var(--s7);
+  margin-bottom: var(--s6);
   flex-wrap: wrap;
 }
 
@@ -333,7 +336,7 @@ h1 em {
   letter-spacing: .15em;
   text-transform: uppercase;
   color: var(--text-secondary);
-  margin-bottom: var(--s4);
+  margin-bottom: var(--s3);
 }
 
 .countdown {
@@ -341,14 +344,14 @@ h1 em {
   justify-content: center;
   gap: var(--s5);
   flex-wrap: wrap;
-  margin-bottom: clamp(32px, 5vh, 48px);
+  margin-bottom: clamp(24px, 4vh, 36px);
 }
 
 .unit {
   position: relative;
-  flex: 1 1 100px;
-  min-width: 86px;
-  padding: var(--s6) var(--s4) var(--s5);
+  flex: 1 1 90px;
+  min-width: 78px;
+  padding: var(--s5) var(--s3) var(--s4);
   border-radius: var(--r-xs);
   background: var(--surface-clay);
   box-shadow: var(--clay-shadow);
@@ -375,11 +378,11 @@ h1 em {
 .unit-value {
   display: block;
   font-family: var(--font-display);
-  font-size: clamp(28px, 5vw, 44px);
+  font-size: clamp(26px, 4.5vw, 40px);
   line-height: 1;
   letter-spacing: -.02em;
   font-variant-numeric: tabular-nums;
-  margin-bottom: var(--s3);
+  margin-bottom: var(--s2);
 }
 
 .unit-value.tick {
@@ -404,7 +407,7 @@ h1 em {
   align-items: center;
   gap: var(--s8);
   flex-wrap: wrap;
-  padding: var(--s8);
+  padding: var(--s7);
   border-radius: var(--r-xs);
   background: var(--surface-clay);
   box-shadow: var(--clay-shadow);
@@ -428,7 +431,7 @@ h1 em {
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: var(--s4);
+  margin-bottom: var(--s3);
 }
 
 .peek h2 {
@@ -436,14 +439,14 @@ h1 em {
   font-weight: 400;
   font-size: var(--fs-xl);
   line-height: 1.2;
-  margin: 0 0 var(--s4);
+  margin: 0 0 var(--s3);
   letter-spacing: -.01em;
 }
 
 .peek p {
   margin: 0;
   font-size: var(--fs-sm);
-  line-height: 1.6;
+  line-height: 1.5;
   color: var(--text-secondary);
   max-width: 48ch;
 }
@@ -485,8 +488,8 @@ footer {
   justify-content: space-between;
   gap: var(--s6);
   flex-wrap: wrap;
-  padding-top: var(--s8);
-  margin-top: var(--s8);
+  padding-top: var(--s6);
+  margin-top: var(--s6);
   border-top: 1px solid var(--border-hair);
   font-size: var(--fs-xs);
   color: var(--text-secondary);
@@ -520,7 +523,7 @@ footer a:hover { color: var(--accent); }
   .nav { padding: var(--s4) var(--s5); }
   .brand-rule, .brand-sub { display: none; }
   .countdown { gap: var(--s4); }
-  .unit { flex: 1 1 calc(50% - var(--s4)); padding: var(--s5) var(--s4); }
+  .unit { flex: 1 1 calc(50% - var(--s4)); padding: var(--s4); }
   .peek { gap: var(--s7); }
   .cta { width: 100%; justify-content: center; }
 }
@@ -541,7 +544,7 @@ footer a:hover { color: var(--accent); }
 <div class="ambient" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
 
-<!-- Floating Dust / Particles layer -->
+<!-- Rich Particles layer -->
 <div class="particles" aria-hidden="true">
   <div class="particle p1"></div>
   <div class="particle p2"></div>
@@ -550,6 +553,9 @@ footer a:hover { color: var(--accent); }
   <div class="particle p5"></div>
   <div class="particle p6"></div>
   <div class="particle p7"></div>
+  <div class="particle p8"></div>
+  <div class="particle p9"></div>
+  <div class="particle p10"></div>
 </div>
 
 <div class="shell">
@@ -561,11 +567,12 @@ footer a:hover { color: var(--accent); }
       <span class="brand-sub">Priority Activator Consulting</span>
     </div>
     <button class="theme-btn" id="themeBtn" type="button"
-            aria-label="Switch to dark theme">
+            aria-label="Switch to light theme">
       <svg id="themeIcon" viewBox="0 0 24 24" fill="none"
            stroke="currentColor" stroke-width="1.9"
            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M20.5 14.3A8.6 8.6 0 1 1 9.7 3.5a6.9 6.9 0 0 0 10.8 10.8z"></path>
+        <circle cx="12" cy="12" r="4.2"></circle>
+        <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
       </svg>
     </button>
   </nav>
@@ -584,9 +591,10 @@ footer a:hover { color: var(--accent); }
       We're upgrading our entire platform for a faster, more seamless & immersive experience. The same dedicated team is behind it, delivering a much higher standard of quality. Want a preview? Our job board is already running on the new setup.
     </p>
 
+    <!-- Top CTA with updated copy -->
     <div class="hero-actions reveal d3">
       <a class="cta" href="https://jobs.pac.africa/" rel="noopener">
-        Browse active jobs
+        Take a sneak peek
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
              stroke-width="2.4" stroke-linecap="round"
              stroke-linejoin="round" aria-hidden="true">
@@ -595,6 +603,7 @@ footer a:hover { color: var(--accent); }
       </a>
     </div>
 
+    <!-- Countdown placed safely below text & top CTA -->
     <div class="reveal d4">
       <p class="countdown-label">Launching in</p>
       <div class="countdown" role="timer" aria-live="off" aria-label="Time remaining until launch">
@@ -628,7 +637,7 @@ footer a:hover { color: var(--accent); }
         </p>
       </div>
       <a class="cta" href="https://jobs.pac.africa/" rel="noopener">
-        Browse jobs
+        Take a sneak peek
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
              stroke-width="2.4" stroke-linecap="round"
              stroke-linejoin="round" aria-hidden="true">
@@ -707,10 +716,10 @@ footer a:hover { color: var(--accent); }
     paint("s", pad(sec % 60));
   }
 
-    tick();
+  tick();
   const timer = setInterval(tick, 1000);
 
-  /* ── Theme toggle (Light default) ── */
+  /* ── Theme toggle (Dark default) ── */
   const root = document.documentElement;
   const btn = document.getElementById("themeBtn");
   const icon = document.getElementById("themeIcon");
@@ -718,8 +727,9 @@ footer a:hover { color: var(--accent); }
   const SUN = '<circle cx="12" cy="12" r="4.2"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>';
   const MOON = '<path d="M20.5 14.3A8.6 8.6 0 1 1 9.7 3.5a6.9 6.9 0 0 0 10.8 10.8z"></path>';
 
-  let theme = "light";
+  let theme = "dark";
   root.setAttribute("data-theme", theme);
+  icon.innerHTML = SUN;
 
   btn.addEventListener("click", function () {
     theme = theme === "dark" ? "light" : "dark";
