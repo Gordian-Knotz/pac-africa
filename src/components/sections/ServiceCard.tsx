@@ -1,0 +1,55 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import { Card, CardContent, CardTitle, CardDescription } from '@/components/ui/Card';
+import { cn } from '@/lib/utils';
+
+interface ServiceCardProps {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  href: string;
+  index?: number;
+  className?: string;
+}
+
+export function ServiceCard({ title, description, icon, href, index = 0, className }: ServiceCardProps) {
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-100px' }}
+      transition={{ duration: 0.6, ease: 'easeOut', delay: index * 0.1 }}
+      className={cn('group', className)}
+    >
+      <Card className="h-full group relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <CardContent className="relative p-6 h-full flex flex-col">
+          <div className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+            {icon}
+          </div>
+          <CardTitle className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+            {title}
+          </CardTitle>
+          <CardDescription className="text-muted-foreground flex-1">
+            {description}
+          </CardDescription>
+          <div className="mt-4 pt-4 border-t border-border/50 flex items-center justify-between">
+            <span className="text-sm font-medium text-primary group-hover:translate-x-1 transition-transform">
+              Learn more
+            </span>
+            <motion.span
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-primary"
+              aria-hidden="true"
+            >
+              ?
+            </motion.span>
+          </div>
+        </CardContent>
+      </Card>
+    </motion.article>
+  );
+}

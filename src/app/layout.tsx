@@ -1,12 +1,56 @@
-﻿import './globals.css';
-import { Header } from '../components/layout/Header';
+import './globals.css';
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/sections/Footer';
+import type { Metadata } from 'next';
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export const metadata: Metadata = {
+  title: 'PAC Africa | Activating Your Potential',
+  description: 'Strategic HR, organizational development, and transformative solutions for organizations across Africa. 100+ years combined experience.',
+  keywords: ['HR consulting', 'organizational development', 'talent management', 'Africa', 'business transformation'],
+  authors: [{ name: 'PAC Africa' }],
+  creator: 'PAC Africa',
+  publisher: 'PAC Africa',
+  robots: 'index, follow',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://pacafrica.com',
+    title: 'PAC Africa | Activating Your Potential',
+    description: 'Strategic HR, organizational development, and transformative solutions for organizations across Africa.',
+    siteName: 'PAC Africa',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'PAC Africa | Activating Your Potential',
+    description: 'Strategic HR, organizational development, and transformative solutions for organizations across Africa.',
+  },
+  verification: {
+    google: 'google-site-verification-code',
+  },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" className="scroll-smooth">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Slab:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+      </head>
+      <body className="min-h-screen flex flex-col antialiased">
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <Header />
-        {children}
+        <main id="main-content" className="flex-1 pt-16 md:pt-20">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );
