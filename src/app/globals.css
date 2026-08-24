@@ -1,19 +1,5 @@
 @import 'tailwindcss';
 
-@font-face {
-  font-family: 'Roboto';
-  font-weight: 300 900;
-  font-display: swap;
-  src: url('/fonts/roboto-latin.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Roboto Slab';
-  font-weight: 300 900;
-  font-display: swap;
-  src: url('/fonts/roboto-slab-latin.woff2') format('woff2');
-}
-
 :root {
   --color-primary: #EB5733;
   --color-primary-hover: #d44a2d;
@@ -22,24 +8,33 @@
   --color-secondary-light: #2d2d2d;
   --color-accent: #FFC39A;
   --color-accent-hover: #ffb07a;
-  --color-background: #ffffff;
-  --color-surface: #fafafa;
-  --color-surface-hover: #f5f5f5;
+  --color-background: #f2ede6;
+  --color-surface: #ece4d9;
+  --color-surface-hover: #e3d9cb;
   --color-text: #1D1D1D;
   --color-text-muted: #6b6b6b;
   --color-border: #e5e5e5;
   --color-success: #10b981;
   --color-error: #ef4444;
-  --font-sans: 'Roboto', system-ui, -apple-system, sans-serif;
-  --font-heading: 'Roboto Slab', Georgia, serif;
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
+  --font-sans: 'Instrument Sans', 'Instrument Sans Fallback', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Instrument Sans', 'Instrument Sans Fallback', system-ui, -apple-system, sans-serif;
+  --radius-sm: 0.75rem;
+  --radius-md: 1.25rem;
+  --radius-lg: 1.75rem;
+  --radius-xl: 2.25rem;
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  /* Claymorphism: soft, puffy, dual-tone shadows that read as depth
+     against the warm off-white background rather than a hard edge. */
+  --clay-light: rgba(255, 255, 255, 0.85);
+  --clay-dark: rgba(90, 70, 55, 0.22);
+  --shadow-clay-sm: 5px 5px 10px var(--clay-dark), -5px -5px 10px var(--clay-light);
+  --shadow-clay: 9px 9px 20px var(--clay-dark), -8px -8px 20px var(--clay-light);
+  --shadow-clay-hover: 12px 12px 26px var(--clay-dark), -10px -10px 24px var(--clay-light);
+  --shadow-clay-inset: inset 5px 5px 10px var(--clay-dark), inset -5px -5px 10px var(--clay-light);
 }
 
 .dark {
@@ -49,6 +44,8 @@
   --color-text: #ffffff;
   --color-text-muted: #a3a3a3;
   --color-border: #404040;
+  --clay-light: rgba(255, 255, 255, 0.06);
+  --clay-dark: rgba(0, 0, 0, 0.55);
 }
 
 * {
@@ -75,7 +72,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-text);
 }
 
-h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
+h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); }
 h2 { font-size: clamp(2rem, 4vw, 3rem); }
 h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
 h4 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); }
@@ -151,8 +148,19 @@ img {
   border-radius: var(--radius-md);
   border: none;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
   white-space: nowrap;
+  box-shadow: var(--shadow-clay);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-clay-hover);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-clay-inset);
 }
 
 .btn-primary {
@@ -162,8 +170,6 @@ img {
 
 .btn-primary:hover {
   background-color: var(--color-primary-hover);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
 }
 
 .btn-secondary {
@@ -173,19 +179,16 @@ img {
 
 .btn-secondary:hover {
   background-color: var(--color-secondary-light);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
 }
 
 .btn-outline {
-  background-color: transparent;
-  border: 2px solid var(--color-secondary);
+  background-color: var(--color-surface);
+  border: none;
   color: var(--color-secondary);
 }
 
 .btn-outline:hover {
-  background-color: var(--color-secondary);
-  color: white;
+  color: var(--color-primary);
 }
 
 .btn-accent {
@@ -195,21 +198,19 @@ img {
 
 .btn-accent:hover {
   background-color: var(--color-accent-hover);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
 }
 
 .card {
   background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
+  border: none;
   border-radius: var(--radius-lg);
   padding: 2rem;
-  transition: all 0.3s ease;
+  box-shadow: var(--shadow-clay);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .card:hover {
-  border-color: var(--color-primary);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-clay-hover);
   transform: translateY(-4px);
 }
 
@@ -218,17 +219,17 @@ img {
   padding: 0.875rem 1rem;
   font-family: var(--font-sans);
   font-size: 1rem;
-  border: 1px solid var(--color-border);
+  border: none;
   border-radius: var(--radius-md);
   background-color: var(--color-background);
   color: var(--color-text);
-  transition: all 0.2s ease;
+  box-shadow: var(--shadow-clay-inset);
+  transition: box-shadow 0.2s ease;
 }
 
 .input:focus {
   outline: none;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px var(--color-primary-light);
+  box-shadow: var(--shadow-clay-inset), 0 0 0 3px var(--color-primary-light);
 }
 
 .input::placeholder {

@@ -4,24 +4,24 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-2xl text-sm font-medium transition-all duration-200 shadow-[var(--shadow-clay)] hover:shadow-[var(--shadow-clay-hover)] hover:-translate-y-0.5 active:shadow-[var(--shadow-clay-inset)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none',
   {
     variants: {
       variant: {
-        default: 'bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm',
-        destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-sm',
-        ghost: 'hover:bg-accent hover:text-accent-foreground shadow-sm',
-        link: 'text-primary underline-offset-4 hover:underline',
-        primary: 'bg-[#EB5733] text-white hover:bg-[#d44a2d] shadow-md hover:shadow-lg hover:-translate-y-0.5',
-        secondary: 'bg-[#1D1D1D] text-white hover:bg-[#2d2d2d] shadow-md hover:shadow-lg hover:-translate-y-0.5',
-        outline: 'border-2 border-[#1D1D1D] text-[#1D1D1D] hover:bg-[#1D1D1D] hover:text-white',
-        accent: 'bg-[#FFC39A] text-[#1D1D1D] hover:bg-[#ffb07a] shadow-md hover:shadow-lg hover:-translate-y-0.5',
+        default: 'bg-primary text-primary-foreground hover:bg-primary/90',
+        destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
+        ghost: 'shadow-none hover:shadow-[var(--shadow-clay-sm)] hover:bg-accent hover:text-accent-foreground',
+        link: 'shadow-none hover:shadow-none text-primary underline-offset-4 hover:underline',
+        primary: 'bg-[#EB5733] text-white hover:bg-[#d44a2d]',
+        secondary: 'bg-[#1D1D1D] text-white hover:bg-[#2d2d2d]',
+        outline: 'bg-[var(--color-surface)] text-[#1D1D1D] hover:text-[#EB5733]',
+        accent: 'bg-[#FFC39A] text-[#1D1D1D] hover:bg-[#ffb07a]',
       },
       size: {
         default: 'h-11 px-6 py-2.5',
-        sm: 'h-9 rounded-md px-3',
-        lg: 'h-12 rounded-lg px-8 text-base',
-        xl: 'h-14 rounded-lg px-10 text-lg',
+        sm: 'h-9 rounded-xl px-3',
+        lg: 'h-12 px-8 text-base',
+        xl: 'h-14 px-10 text-lg',
         icon: 'h-11 w-11',
       },
     },
