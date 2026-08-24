@@ -1,0 +1,1 @@
+export default function Page() { return <main><h1>PAC</h1></main>; }
