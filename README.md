@@ -44,3 +44,11 @@ Used by `ContactForm` (`src/components/sections/ContactForm.tsx`) to insert subm
 - `src/components/sections` — page sections (`Hero`, `Footer`, `ContactForm`, `WhyChooseUs`, `CTASection`, cards)
 - `src/components/ui` — reusable primitives (`Button`, `Card`, `Input`, `Textarea`, `Label`)
 - `src/lib` — shared utilities (`cn` helper, Supabase folder)
+
+## Design reference
+
+`jb-design.md` in the repo root is the token/style brief this site's claymorphism direction and typography (Instrument Sans) are derived from.
+
+## Legacy content
+
+Four `pacafric_*.sql` files in the repo root are MySQL dumps from the old WordPress site and related internal tools. Only `pacafric_pacmain.sql` is the marketing site; see [`docs/content-migration.md`](docs/content-migration.md) for what's usable, what's spam, and what's out of scope.

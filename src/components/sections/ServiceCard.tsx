@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardTitle, CardDescription } from '@/components/ui/Card';
 import { cn } from '@/lib/utils';
+import { ArrowRight } from 'lucide-react';
 
 interface ServiceCardProps {
   title: string;
@@ -34,19 +35,11 @@ export function ServiceCard({ title, description, icon, href, index = 0, classNa
           <CardDescription className="text-muted-foreground flex-1">
             {description}
           </CardDescription>
-          <div className="mt-4 pt-4 border-t border-border/50 flex items-center justify-between">
-            <span className="text-sm font-medium text-primary group-hover:translate-x-1 transition-transform">
+          <div className="mt-4 pt-4 flex items-center justify-between shadow-[inset_0_1px_0_var(--clay-rim)]">
+            <span className="text-sm font-medium text-primary flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
               Learn more
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </span>
-            <motion.span
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-primary"
-              aria-hidden="true"
-            >
-              ?
-            </motion.span>
           </div>
         </CardContent>
       </Card>

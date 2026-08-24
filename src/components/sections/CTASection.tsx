@@ -76,7 +76,7 @@ export function CTASection({
                 <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
               </Link>
             </Button>
-            <Button variant="outline" size="xl" className="border-white text-white hover:bg-white hover:text-secondary" asChild>
+            <Button variant="outline" size="xl" className="bg-white/10 text-white hover:bg-white hover:text-secondary" asChild>
               <Link href={secondaryHref}>{secondaryText}</Link>
             </Button>
           </motion.div>

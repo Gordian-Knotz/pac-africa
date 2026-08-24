@@ -260,7 +260,7 @@ export default function AboutPage() {
             <Button size="xl" variant="accent" asChild>
               <a href="/contact">Start a Conversation</a>
             </Button>
-            <Button size="xl" variant="outline" className="border-white text-white hover:bg-white/10" asChild>
+            <Button size="xl" variant="outline" className="bg-white/10 text-white hover:bg-white hover:text-secondary" asChild>
               <a href="/about">Learn More About Us</a>
             </Button>
           </motion.div>

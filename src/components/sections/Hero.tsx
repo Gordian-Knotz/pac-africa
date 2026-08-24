@@ -75,12 +75,12 @@ export function Hero({ className }: HeroProps) {
               <div className="text-4xl md:text-5xl font-bold text-primary">100+</div>
               <div className="text-muted-foreground mt-1">Years Combined Experience</div>
             </div>
-            <div className="hidden md:block w-px h-12 bg-border" aria-hidden="true" />
+            <div className="hidden md:block w-px h-12 shadow-[var(--shadow-clay-inset)] rounded-full" aria-hidden="true" />
             <div role="listitem">
               <div className="text-4xl md:text-5xl font-bold text-primary">500+</div>
               <div className="text-muted-foreground mt-1">Projects Delivered</div>
             </div>
-            <div className="hidden md:block w-px h-12 bg-border" aria-hidden="true" />
+            <div className="hidden md:block w-px h-12 shadow-[var(--shadow-clay-inset)] rounded-full" aria-hidden="true" />
             <div role="listitem">
               <div className="text-4xl md:text-5xl font-bold text-primary">50+</div>
               <div className="text-muted-foreground mt-1">Clients Across Africa</div>

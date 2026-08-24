@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
+import { ThemeToggle } from '@/components/layout/ThemeToggle';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -32,7 +33,7 @@ export function Header() {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         isScrolled
-          ? 'bg-background/95 backdrop-blur-sm shadow-sm border-b border-border'
+          ? 'bg-background/95 backdrop-blur-sm shadow-[0_4px_20px_-8px_var(--clay-dark)]'
           : 'bg-transparent'
       )}
       role="banner"
@@ -61,9 +62,11 @@ export function Header() {
             <Button variant="primary" size="sm" asChild>
               <Link href="/contact">Get Started</Link>
             </Button>
+            <ThemeToggle />
           </div>
-          
-          <div className="md:hidden flex items-center gap-4">
+
+          <div className="md:hidden flex items-center gap-3">
+            <ThemeToggle />
             <Button
               variant="ghost"
               size="icon"
@@ -84,7 +87,7 @@ export function Header() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden overflow-hidden border-t border-border bg-background"
+              className="md:hidden overflow-hidden bg-background shadow-[inset_0_1px_0_var(--clay-rim)]"
             >
               <div className="py-6 space-y-4">
                 {navigation.map((item) => (
@@ -97,7 +100,7 @@ export function Header() {
                     {item.label}
                   </Link>
                 ))}
-                <div className="pt-4 border-t border-border flex gap-3">
+                <div className="pt-4 flex gap-3 shadow-[inset_0_1px_0_var(--clay-rim)]">
                   <Button variant="primary" className="flex-1" asChild>
                     <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>Get Started</Link>
                   </Button>
