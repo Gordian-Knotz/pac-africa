@@ -26,7 +26,7 @@ export function CTASection({
   className,
 }: CTASectionProps) {
   return (
-    <section className="section relative overflow-hidden" aria-labelledby="cta-heading">
+    <section className="section relative overflow-hidden on-dark-surface" aria-labelledby="cta-heading">
       <div className="absolute inset-0 bg-secondary" />
       <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-transparent to-accent/20" />
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-accent to-primary" aria-hidden="true" />
