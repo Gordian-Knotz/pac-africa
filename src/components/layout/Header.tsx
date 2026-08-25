@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
 import { ThemeToggle } from '@/components/layout/ThemeToggle';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navigation = [
@@ -19,7 +19,7 @@ const navigation = [
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -27,34 +27,32 @@ export function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
+
   return (
-    <header
-      className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        isScrolled
-          ? 'bg-background/95 backdrop-blur-sm shadow-[0_4px_20px_-8px_var(--clay-dark)]'
-          : 'bg-transparent'
-      )}
-      role="banner"
-    >
-      <nav className="container" aria-label="Main navigation">
-        <div className="flex h-16 md:h-20 items-center justify-between">
+    <header className="fixed top-3 md:top-5 left-0 right-0 z-50" role="banner">
+      <div className="container">
+        <nav
+          className={cn(
+            'mx-auto flex h-14 md:h-16 max-w-4xl items-center justify-between rounded-full bg-[var(--color-surface)]/90 backdrop-blur-md px-4 md:px-6 shadow-[var(--shadow-clay)] transition-shadow duration-300',
+            isScrolled && 'shadow-[var(--shadow-clay-hover)]'
+          )}
+          aria-label="Main navigation"
+        >
           <Link
             href="/"
-            className="flex items-center gap-2 text-xl font-bold text-foreground"
+            className="flex items-center gap-1 text-lg font-bold text-foreground"
             aria-label="PAC Africa Home"
           >
             <span className="text-foreground">PAC</span>
-            <span className="text-primary"> Africa</span>
+            <span className="text-primary">Africa</span>
           </Link>
-          
-          <div className="hidden md:flex md:items-center md:gap-8">
+
+          <div className="hidden md:flex md:items-center md:gap-6">
             {navigation.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all hover:after:w-full"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
                 {item.label}
               </Link>
@@ -65,42 +63,43 @@ export function Header() {
             <ThemeToggle />
           </div>
 
-          <div className="md:hidden flex items-center gap-3">
+          <div className="md:hidden flex items-center gap-2">
             <ThemeToggle />
             <Button
               variant="ghost"
               size="icon"
+              className="h-9 w-9 rounded-full"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
               aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
             >
-              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
           </div>
-        </div>
-        
+        </nav>
+
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
               id="mobile-menu"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden overflow-hidden bg-background shadow-[inset_0_1px_0_var(--clay-rim)]"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="md:hidden mx-auto mt-2 max-w-4xl overflow-hidden rounded-3xl bg-[var(--color-surface)] shadow-[var(--shadow-clay)]"
             >
-              <div className="py-6 space-y-4">
+              <div className="p-4 space-y-1">
                 {navigation.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="block px-2 py-2 text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
+                    className="block rounded-xl px-3 py-2.5 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-[var(--color-surface-hover)] transition-colors"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.label}
                   </Link>
                 ))}
-                <div className="pt-4 flex gap-3 shadow-[inset_0_1px_0_var(--clay-rim)]">
+                <div className="pt-3 flex gap-3">
                   <Button variant="primary" className="flex-1" asChild>
                     <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>Get Started</Link>
                   </Button>
@@ -112,7 +111,7 @@ export function Header() {
             </motion.div>
           )}
         </AnimatePresence>
-      </nav>
+      </div>
     </header>
   );
 }

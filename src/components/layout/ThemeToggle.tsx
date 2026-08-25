@@ -11,7 +11,7 @@ export function ThemeToggle() {
   useEffect(() => setMounted(true), []);
 
   if (!mounted) {
-    return <div className="h-11 w-11 rounded-2xl" aria-hidden="true" />;
+    return <div className="h-9 w-9 rounded-full" aria-hidden="true" />;
   }
 
   const isDark = resolvedTheme === 'dark';
@@ -20,11 +20,11 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
-      className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-[var(--color-surface)] text-[var(--color-text)] shadow-[var(--shadow-clay-sm)] transition-all hover:shadow-[var(--shadow-clay)] active:shadow-[var(--shadow-clay-inset)]"
+      className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[var(--color-surface-hover)] text-[var(--color-text)] shadow-[var(--shadow-clay-sm)] transition-all hover:shadow-[var(--shadow-clay)] active:shadow-[var(--shadow-clay-inset)]"
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       aria-pressed={isDark}
     >
-      {isDark ? <Sun className="h-5 w-5" aria-hidden="true" /> : <Moon className="h-5 w-5" aria-hidden="true" />}
+      {isDark ? <Sun className="h-4 w-4" aria-hidden="true" /> : <Moon className="h-4 w-4" aria-hidden="true" />}
     </button>
   );
 }
