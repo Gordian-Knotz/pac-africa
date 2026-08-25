@@ -104,14 +104,14 @@ export default function ContactPage() {
                         {item.href ? (
                           <a
                             href={item.href}
-                            className="text-muted-foreground hover:text-primary transition-colors"
+                            className="text-sm text-muted-foreground hover:text-primary transition-colors"
                             target={item.href.startsWith('http') ? '_blank' : undefined}
                             rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                           >
                             {item.details}
                           </a>
                         ) : (
-                          <p className="text-muted-foreground">{item.details}</p>
+                          <p className="text-sm text-muted-foreground">{item.details}</p>
                         )}
                       </div>
                     </motion.div>
@@ -184,7 +184,7 @@ export default function ContactPage() {
               >
                 <h3 className="text-xl font-bold mb-1">{office.city}</h3>
                 <p className="text-primary text-sm font-medium mb-3">{office.country}</p>
-                <address className="not-italic text-muted-foreground space-y-2">
+                <address className="not-italic text-sm text-muted-foreground space-y-2 leading-relaxed">
                   <p>{office.address}</p>
                   <a href={`tel:${office.phone}`} className="hover:text-primary transition-colors">{office.phone}</a>
                 </address>

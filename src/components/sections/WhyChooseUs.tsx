@@ -54,7 +54,7 @@ export function WhyChooseUs({ className }: WhyChooseUsProps) {
               <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
                 {reason.title}
               </h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-sm text-muted-foreground leading-relaxed">
                 {reason.description}
               </p>
             </motion.article>

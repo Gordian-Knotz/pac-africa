@@ -24,7 +24,7 @@ export function StatCard({ value, label, index = 0, className, role }: StatCardP
       <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-2" aria-hidden="true">
         {value}
       </div>
-      <div className="text-muted-foreground font-medium">{label}</div>
+      <div className="text-sm text-muted-foreground font-medium">{label}</div>
     </motion.div>
   );
 }

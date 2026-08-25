@@ -172,7 +172,7 @@ export default function ServicesPage() {
               >
                 <div className="text-4xl font-bold text-primary/20 mb-4">{item.step}</div>
                 <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                <p className="text-muted-foreground">{item.description}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
               </motion.div>
             ))}
           </div>

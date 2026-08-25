@@ -70,7 +70,7 @@ export function BlogCard({
           <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-2">
             <Link href={href}>{title}</Link>
           </h3>
-          <p className="text-muted-foreground mb-4 line-clamp-3">{excerpt}</p>
+          <p className="text-sm text-muted-foreground mb-4 line-clamp-3 leading-relaxed">{excerpt}</p>
           <Link
             href={href}
             className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:gap-3 transition-all"

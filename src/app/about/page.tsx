@@ -171,7 +171,7 @@ export default function AboutPage() {
                   <value.icon className="h-7 w-7" aria-hidden="true" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{value.title}</h3>
-                <p className="text-muted-foreground">{value.description}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{value.description}</p>
               </motion.article>
             ))}
           </div>

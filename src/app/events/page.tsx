@@ -69,7 +69,7 @@ export default function EventsPage() {
                     <CardTitle className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
                       <Link href={`/events/${event.slug}`}>{event.title}</Link>
                     </CardTitle>
-                    <p className="text-muted-foreground mb-4 flex-1">{event.summary}</p>
+                    <p className="text-sm text-muted-foreground mb-4 flex-1 leading-relaxed">{event.summary}</p>
                     <Link
                       href={`/events/${event.slug}`}
                       className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:gap-3 transition-all"
