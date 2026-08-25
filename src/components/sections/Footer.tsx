@@ -9,14 +9,6 @@ function Facebook(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-function Twitter(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-      <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05a3.9 3.9 0 0 0-6.65 3.56 11.1 11.1 0 0 1-8.06-4.09 3.9 3.9 0 0 0 1.2 5.2 3.86 3.86 0 0 1-1.76-.49c-.04 1.9 1.32 3.68 3.29 4.08a3.9 3.9 0 0 1-1.76.07 3.9 3.9 0 0 0 3.64 2.71A7.86 7.86 0 0 1 2 18.57a11.1 11.1 0 0 0 6.01 1.76c7.21 0 11.15-6.02 11.15-11.24l-.01-.51c.77-.55 1.43-1.24 1.31-1.58z" />
-    </svg>
-  );
-}
-
 function Linkedin(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
@@ -69,10 +61,9 @@ export function Footer() {
   };
   
   const socialLinks = [
-    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
-    { icon: Facebook, href: 'https://facebook.com', label: 'Facebook' },
-    { icon: Instagram, href: 'https://instagram.com', label: 'Instagram' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/priority-activator-consulting', label: 'LinkedIn' },
+    { icon: Facebook, href: 'https://www.facebook.com/PriorityActivator/', label: 'Facebook' },
+    { icon: Instagram, href: 'https://www.instagram.com/pac.africa/', label: 'Instagram' },
   ];
   
   return (
