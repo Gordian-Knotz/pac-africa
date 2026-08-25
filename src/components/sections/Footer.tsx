@@ -54,7 +54,7 @@ export function Footer() {
       { label: 'Mobility', href: '/services#mobility' },
     ],
     resources: [
-      { label: 'Events & Programs', href: '/events' },
+      { label: 'Events', href: '/events' },
       { label: 'Insights', href: '/insights' },
       { label: 'Careers', href: 'https://jobs.pac.africa' },
       { label: 'Privacy Policy', href: '#' },

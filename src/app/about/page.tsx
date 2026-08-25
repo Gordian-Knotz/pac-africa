@@ -55,33 +55,6 @@ const focusAreas = [
   'HR Technology & Analytics',
 ];
 
-const team = [
-  {
-    name: 'Dr. Patricia Okello',
-    role: 'Founding Partner',
-    bio: '25+ years in HR strategy and organizational development across East Africa. PhD in Organizational Psychology.',
-    image: '/team/patricia.jpg',
-  },
-  {
-    name: 'James Mwangi',
-    role: 'Managing Partner',
-    bio: 'Former CHRO at multinational corporations. Expert in transformation, M&A integration, and leadership development.',
-    image: '/team/james.jpg',
-  },
-  {
-    name: 'Sarah Njeri',
-    role: 'Partner, Innovation',
-    bio: 'Design thinking practitioner and innovation strategist. Led digital transformation for major financial institutions.',
-    image: '/team/sarah.jpg',
-  },
-  {
-    name: 'David Ochieng',
-    role: 'Partner, Mobility',
-    bio: 'Immigration law and global mobility specialist. Managed expatriate programs for 50+ multinational clients.',
-    image: '/team/david.jpg',
-  },
-];
-
 export default function AboutPage() {
   return (
     <>
@@ -172,38 +145,6 @@ export default function AboutPage() {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{value.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{value.description}</p>
-              </motion.article>
-            ))}
-          </div>
-        </div>
-      </section>
-      
-      <section className="section bg-surface" aria-labelledby="team-heading">
-        <div className="container">
-          <div className="section-header">
-            <span className="eyebrow">Leadership Team</span>
-            <h2 id="team-heading">Meet Our Partners</h2>
-            <p>Experienced leaders with deep expertise across industries and geographies</p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {team.map((member, index) => (
-              <motion.article
-                key={member.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-100px' }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="card p-6 text-center"
-              >
-                <div className="mx-auto mb-4 w-28 h-28 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden">
-                  <span className="text-3xl font-bold text-primary">
-                    {member.name.split(' ').map(n => n[0]).join('')}
-                  </span>
-                </div>
-                <h3 className="text-lg font-semibold">{member.name}</h3>
-                <p className="text-primary text-sm font-medium mb-3">{member.role}</p>
-                <p className="text-sm text-muted-foreground">{member.bio}</p>
               </motion.article>
             ))}
           </div>
