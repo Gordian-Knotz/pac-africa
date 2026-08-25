@@ -90,8 +90,8 @@ Done (this round):
 4. **Brand pass** — footer copyright now reads "Priority Activator Consulting, trading as PAC Africa"; fixed the placeholder `pacafrica.com` domain to `pac.africa` in OpenGraph metadata and all email references.
 5. **Careers** — footer "Careers" link now points to `https://jobs.pac.africa` (external, new tab) instead of `/contact`.
 6. **Events/Programs page** — new `/events` route: re-parsed the legacy Event Tickets New (`etn`) plugin data for the 7 real published events (Culture Certification Programme, C-Suite Breakfast, Change Management Workshop, Leadership Immersion Workshop, and others) and 5 real speaker bios, stripped stale/expired promotional content (passed dates, dead pricing) and dead brochure-PDF links, and built `/events` (grid) + `/events/[slug]` (detail) routes from `src/data/events.ts`. Added to `Header`/`Footer` nav. Repointed the real Insights articles' `pac.africa/Events/...` references from the `/contact` placeholder to their actual `/events/[slug]` destinations.
+7. **Testimonials/partner logos** — dropped the invented "Our Partners" section (Safaricom, KCB, Equity Bank, etc.) from the About page entirely; nothing in the legacy dump backs it up and no real client sign-off is available. No testimonials existed to port (the dump's "testimonial" hits were all Elementor template metadata).
 
-Not yet done (deferred to a later round):
-7. **Testimonials/partner logos**: remove or replace the current invented partner list (Safaricom, KCB, etc.) on the About page — nothing in the legacy dump backs it up. Needs real client sign-off before anything goes back up, or drop the section.
+All 8 originally documented migration steps are now done.
 
 Each of these is a separate, reviewable change — tackle one at a time rather than a single sweeping PR.

@@ -55,11 +55,6 @@ const focusAreas = [
   'HR Technology & Analytics',
 ];
 
-const partners = [
-  'Safaricom', 'KCB Group', 'Equity Bank', 'East African Breweries',
-  'Kenya Airways', 'BAT Kenya', 'Standard Chartered', 'Absa Bank',
-];
-
 const team = [
   {
     name: 'Dr. Patricia Okello',
@@ -210,24 +205,6 @@ export default function AboutPage() {
                 <p className="text-primary text-sm font-medium mb-3">{member.role}</p>
                 <p className="text-sm text-muted-foreground">{member.bio}</p>
               </motion.article>
-            ))}
-          </div>
-        </div>
-      </section>
-      
-      <section className="section" aria-labelledby="partners-heading">
-        <div className="container">
-          <div className="section-header">
-            <span className="eyebrow">Trusted By</span>
-            <h2 id="partners-heading">Our Partners</h2>
-            <p>Proud to work with leading organizations across Africa</p>
-          </div>
-          
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16 opacity-60 hover:opacity-100 transition-opacity">
-            {partners.map((partner) => (
-              <span key={partner} className="text-lg font-medium text-muted-foreground">
-                {partner}
-              </span>
             ))}
           </div>
         </div>
