@@ -42,7 +42,7 @@ export function Footer() {
     company: [
       { label: 'About Us', href: '/about' },
       { label: 'Services', href: '/services' },
-      { label: 'Case Studies', href: '/case-studies' },
+      { label: 'Insights', href: '/insights' },
       { label: 'Contact', href: '/contact' },
     ],
     services: [
@@ -54,9 +54,8 @@ export function Footer() {
       { label: 'Mobility', href: '/services#mobility' },
     ],
     resources: [
-      { label: 'Blog', href: '/case-studies' },
-      { label: 'Insights', href: '/case-studies' },
-      { label: 'Careers', href: '/contact' },
+      { label: 'Insights', href: '/insights' },
+      { label: 'Careers', href: 'https://jobs.pac.africa' },
       { label: 'Privacy Policy', href: '#' },
       { label: 'Terms of Service', href: '#' },
     ],
@@ -65,7 +64,7 @@ export function Footer() {
   const contactInfo = {
     address: '123 Business Avenue, Nairobi, Kenya',
     phone: '+254 700 000 000',
-    email: 'info@pacafrica.com',
+    email: 'info@pac.africa',
   };
   
   const socialLinks = [
@@ -139,16 +138,21 @@ export function Footer() {
           <nav aria-label="Resources">
             <h3 className="font-semibold mb-4">Resources</h3>
             <ul className="space-y-3">
-              {navigation.resources.map((item) => (
-                <li key={item.label}>
-                  <Link
-                    href={item.href}
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
+              {navigation.resources.map((item) => {
+                const isExternal = item.href.startsWith('http');
+                return (
+                  <li key={item.label}>
+                    <Link
+                      href={item.href}
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                      target={isExternal ? '_blank' : undefined}
+                      rel={isExternal ? 'noopener noreferrer' : undefined}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
           
@@ -167,7 +171,7 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-primary flex-shrink-0" aria-hidden="true" />
-                <a href="mailto:info@pacafrica.com" className="hover:text-primary transition-colors">
+                <a href="mailto:info@pac.africa" className="hover:text-primary transition-colors">
                   {contactInfo.email}
                 </a>
               </div>
@@ -177,7 +181,7 @@ export function Footer() {
         
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-muted-foreground text-sm">
-            © {currentYear} PAC Africa. All rights reserved.
+            © {currentYear} Priority Activator Consulting, trading as PAC Africa. All rights reserved.
           </p>
           <p className="text-muted-foreground text-sm">
             Crafted with precision for African excellence

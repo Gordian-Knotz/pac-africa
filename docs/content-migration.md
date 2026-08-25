@@ -78,18 +78,20 @@ If there's a future need to integrate any of these (e.g. a client portal), that'
 2. **Offices** — drop the invented Kigali office. Real 3: Nairobi (HQ), Dar es Salaam, Kampala.
 3. **Navigation** — rename "Case Studies" → "Insights", backed by the 12 real blog articles (not fabricated case studies). Add a new "Events" / "Programs" page for the workshops/certifications found in the dump.
 4. **Careers** — not a page on this site. Link out to the jobs board at `jobs.pac.africa` (a separate app — this is what `jb-design.md`'s dark dashboard design brief is for, now it's clear why that file exists in this repo).
-5. **Contact email** — still open: confirm whether to use the legacy `info@pacconsulting.co.ke` or a new `@pac.africa` address before launch.
-6. **Contact form fields** — still open: legacy was Name/Email/Subject/Message; current site has Company/Phone/Service dropdown too (arguably better for a B2B lead form). No decision needed yet, revisit during Contact page rebuild.
+5. **Contact email** — resolved: using a new `info@pac.africa` address (not the legacy `info@pacconsulting.co.ke`). Confirmed by the dump itself — the legacy Privacy Policy page already references `info@pac.africa` / `www.pac.africa`, so this is the real intended domain.
+6. **Contact form fields** — resolved: keeping the current richer Name/Email/Company/Phone/Service/Message shape (better for a B2B lead form than the legacy Name/Email/Subject/Message).
 
-## Next steps (build plan)
+## Build plan status
 
-1. **Content cleanup** — take the 12 real blog articles + Services/About/Contact copy, strip spam injections and Elementor/Gutenberg markup, rewrite as clean copy blocks (source of truth becomes hand-checked prose, not raw DB dump).
-2. **Insights section** — rename `/case-studies` → `/insights` (route + nav label + component names where reasonable), replace the fabricated entries in `BlogCard`/`CaseStudiesPage` with the 12 real articles.
-3. **Events/Programs page** — new `/events` (or `/programs`) route: list the workshops/certifications found (Culture Certification Programme, CEO's Breakfast Roundtable, Change Management Workshop, Leadership Immersion Workshop, Culture Transformation Fundamentals, Governance/Risk/Compliance, ASK: The CEO's Program), each with the speaker names found. Add to `Header`/`Footer` nav.
-4. **Contact page**: swap the invented Kigali office block for the real 3; keep placeholder phone numbers until real ones are supplied; decide on the email address (open item above).
-5. **Brand pass**: add "Priority Activator Consulting" as the legal name in the footer copyright line and any legal pages (Privacy Policy, Terms), keep "PAC Africa" as the primary brand mark everywhere else.
-6. **Careers**: add a "Careers" link (header nav or footer) pointing to `jobs.pac.africa` (external link, opens in new tab).
-7. **Services page rewrite**: fold in the richer legacy detail (Payroll Processing incl. NHIF/NSSF/PAYE/NITA/HELB, HR Audit, Performance Management, HR Administration, Governance & Risk Management) as expanded content under the existing 6 service categories — the categories themselves are already correct, only the depth of copy needs upgrading.
-8. **Testimonials/partner logos**: remove or replace the current invented partner list (Safaricom, KCB, etc.) on the About page — nothing in the legacy dump backs it up. Needs real client sign-off before anything goes back up, or drop the section.
+Done (this round):
+1. **Content cleanup + Insights section** — re-parsed `pacafric_pacmain.sql` for the 12 real, non-spam posts, stripped WordPress/Elementor/Gutenberg markup, and re-checked each for spam-injection artifacts (none found beyond the already-excluded Rolex post). Stored as `src/data/insights.ts`. Renamed `/case-studies` → `/insights`, replaced the fabricated `BlogCard` entries with the real articles, added an `/insights/[slug]` detail page rendering each article's cleaned body.
+2. **Services page rewrite** — folded the richer legacy detail into the existing 6 categories: Payroll Processing (NHIF/NSSF/PAYE/NITA/HELB) and HR Audit & Administration under HR Support; Governance & Risk Management under Organization Development. Categories themselves were already correct.
+3. **Contact page** — swapped the invented 4th office (Kigali) for the real 3 (Nairobi HQ, Dar es Salaam, Kampala) with their real addresses from the dump; updated to the resolved `info@pac.africa` email.
+4. **Brand pass** — footer copyright now reads "Priority Activator Consulting, trading as PAC Africa"; fixed the placeholder `pacafrica.com` domain to `pac.africa` in OpenGraph metadata and all email references.
+5. **Careers** — footer "Careers" link now points to `https://jobs.pac.africa` (external, new tab) instead of `/contact`.
 
-Each of these is a separate, reviewable change — recommend tackling one at a time rather than a single sweeping PR.
+Not yet done (deferred to a later round):
+6. **Events/Programs page** — new `/events` (or `/programs`) route: list the workshops/certifications found (Culture Certification Programme, CEO's Breakfast Roundtable, Change Management Workshop, Leadership Immersion Workshop, Culture Transformation Fundamentals, Governance/Risk/Compliance, ASK: The CEO's Program), each with the speaker names found. Add to `Header`/`Footer` nav. Note: several of the real Insights articles reference `pac.africa/Events/...` — those internal links currently point to `/contact` as a placeholder until this page exists.
+7. **Testimonials/partner logos**: remove or replace the current invented partner list (Safaricom, KCB, etc.) on the About page — nothing in the legacy dump backs it up. Needs real client sign-off before anything goes back up, or drop the section.
+
+Each of these is a separate, reviewable change — tackle one at a time rather than a single sweeping PR.

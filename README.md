@@ -40,7 +40,8 @@ Used by `ContactForm` (`src/components/sections/ContactForm.tsx`) to insert subm
 
 ## Project structure
 
-- `src/app` — routes (`/`, `/about`, `/services`, `/case-studies`, `/contact`) and root layout
+- `src/app` — routes (`/`, `/about`, `/services`, `/insights`, `/insights/[slug]`, `/contact`) and root layout
+- `src/data` — static content data (`insights.ts`, the real blog articles ported from the legacy site)
 - `src/components/layout` — `Header`, `ThemeProvider`, `ThemeToggle`
 - `src/components/sections` — page sections (`Hero`, `Footer`, `ContactForm`, `WhyChooseUs`, `CTASection`, cards)
 - `src/components/ui` — reusable primitives (`Button`, `Card`, `Input`, `Textarea`, `Label`)

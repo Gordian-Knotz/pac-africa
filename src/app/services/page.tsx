@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Card, CardContent, CardTitle, CardDescription } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import Link from 'next/link';
-import { ArrowRight, Lightbulb, Users, Target, Briefcase, RefreshCw, Globe } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Lightbulb, Users, Target, Briefcase, RefreshCw, Globe } from 'lucide-react';
 
 const services = [
   {
@@ -18,10 +18,10 @@ const services = [
   {
     id: 'org-dev',
     title: 'Organization Development',
-    description: 'Build high-performing organizations through structure design, culture transformation, change management, and leadership development programs.',
-    longDescription: 'Our organization development practice helps you align structure, culture, and capabilities with your strategic objectives. We work with leadership teams to diagnose organizational health, design fit-for-purpose structures, and implement sustainable change.',
+    description: 'Build high-performing organizations through structure design, culture transformation, change management, and governance & risk oversight.',
+    longDescription: 'Our organization development practice helps you align structure, culture, and capabilities with your strategic objectives. We work with leadership teams to diagnose organizational health, design fit-for-purpose structures, and implement sustainable change — including governance frameworks and risk oversight that keep growth on a sound footing.',
     icon: Users,
-    features: ['Organizational Design', 'Culture Assessment & Transformation', 'Change Management', 'Leadership Development', 'Team Effectiveness', 'Employee Engagement'],
+    features: ['Organizational Design', 'Culture Assessment & Transformation', 'Change Management', 'Leadership Development', 'Governance & Risk Management', 'Employee Engagement'],
   },
   {
     id: 'strategy',
@@ -34,10 +34,10 @@ const services = [
   {
     id: 'hr-support',
     title: 'HR Support',
-    description: 'Comprehensive HR solutions including talent acquisition, performance management, compensation design, HR policy development, and compliance.',
-    longDescription: 'From strategic HR advisory to operational support, we help you build HR functions that drive business performance. Our team brings deep expertise across the full HR lifecycle, tailored to African regulatory environments.',
+    description: 'Comprehensive HR solutions including talent acquisition, performance management, compensation design, statutory payroll processing, and HR audits.',
+    longDescription: 'From strategic HR advisory to operational support, we help you build HR functions that drive business performance. Our team brings deep expertise across the full HR lifecycle, including statutory payroll processing (NHIF, NSSF, PAYE, NITA, HELB) and HR audits, tailored to East African regulatory environments.',
     icon: Briefcase,
-    features: ['Talent Acquisition', 'Performance Management', 'Compensation & Benefits', 'HR Policy & Compliance', 'HR Technology Implementation', 'HR Outsourcing'],
+    features: ['Talent Acquisition', 'Performance Management', 'Compensation & Benefits', 'HR Policy & Compliance', 'Payroll Processing (NHIF, NSSF, PAYE, NITA, HELB)', 'HR Audit & Administration'],
   },
   {
     id: 'transformation',
@@ -128,7 +128,7 @@ export default function ServicesPage() {
                     <ul className="space-y-3 mb-6 flex-1" role="list" aria-label={`${service.title} service features`}>
                       {service.features.map((feature, featureIndex) => (
                         <li key={featureIndex} className="flex items-start gap-3 text-sm text-muted-foreground">
-                          <span className="text-primary flex-shrink-0 mt-0.5" aria-hidden="true">?</span>
+                          <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" aria-hidden="true" />
                           <span>{feature}</span>
                         </li>
                       ))}

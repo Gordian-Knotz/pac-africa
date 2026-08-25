@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://pacafrica.com',
+    url: 'https://pac.africa',
     title: 'PAC Africa | Activating Your Potential',
     description: 'Strategic HR, organizational development, and transformative solutions for organizations across Africa.',
     siteName: 'PAC Africa',

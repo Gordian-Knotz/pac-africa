@@ -2,13 +2,13 @@
 
 import { motion } from 'framer-motion';
 import { ContactForm } from '@/components/sections/ContactForm';
-import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, ArrowRight } from 'lucide-react';
 
 const contactInfo = [
   {
     icon: MapPin,
     title: 'Visit Us',
-    details: '123 Business Avenue, Westlands, Nairobi, Kenya',
+    details: 'Jasmine Centre, Pio Gama Pinto Road, Westlands, Nairobi, Kenya',
     href: 'https://maps.google.com',
   },
   {
@@ -20,8 +20,8 @@ const contactInfo = [
   {
     icon: Mail,
     title: 'Email Us',
-    details: 'info@pacafrica.com',
-    href: 'mailto:info@pacafrica.com',
+    details: 'info@pac.africa',
+    href: 'mailto:info@pac.africa',
   },
   {
     icon: Clock,
@@ -123,19 +123,19 @@ export default function ContactPage() {
                   <ul className="space-y-3" role="list">
                     <li>
                       <a href="/services" className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2">
-                        <span aria-hidden="true">?</span>
+                        <ArrowRight className="h-4 w-4" aria-hidden="true" />
                         Explore Our Services
                       </a>
                     </li>
                     <li>
-                      <a href="/case-studies" className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2">
-                        <span aria-hidden="true">?</span>
-                        Read Case Studies
+                      <a href="/insights" className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2">
+                        <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                        Read Our Insights
                       </a>
                     </li>
                     <li>
                       <a href="/about" className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2">
-                        <span aria-hidden="true">?</span>
+                        <ArrowRight className="h-4 w-4" aria-hidden="true" />
                         Learn About Us
                       </a>
                     </li>
@@ -168,12 +168,11 @@ export default function ContactPage() {
             <p>Strategically located to serve our clients across the continent</p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { city: 'Nairobi', country: 'Kenya (HQ)', address: '123 Business Avenue, Westlands', phone: '+254 700 000 000' },
-              { city: 'Kampala', country: 'Uganda', address: '456 Acacia Avenue, Kololo', phone: '+256 700 000 000' },
-              { city: 'Dar es Salaam', country: 'Tanzania', address: '789 Samora Avenue, City Centre', phone: '+255 700 000 000' },
-              { city: 'Kigali', country: 'Rwanda', address: '321 KG 7 Ave, Nyarugenge', phone: '+250 700 000 000' },
+              { city: 'Nairobi', country: 'Kenya (HQ)', address: 'Jasmine Centre, Pio Gama Pinto Road, Westlands', phone: '+254 700 000 000' },
+              { city: 'Dar es Salaam', country: 'Tanzania', address: 'Sinza Kivulini, Raha Street', phone: '+255 700 000 000' },
+              { city: 'Kampala', country: 'Uganda', address: 'Plot 11, Archer Road, Lower Kololo Terrace', phone: '+256 700 000 000' },
             ].map((office, index) => (
               <motion.div
                 key={office.city}
