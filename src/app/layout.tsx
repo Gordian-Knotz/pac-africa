@@ -2,9 +2,11 @@ import './globals.css';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/sections/Footer';
 import { ThemeProvider } from '@/components/layout/ThemeProvider';
+import { Analytics } from '@vercel/analytics/next';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://pac.africa'),
   title: 'PAC Africa | Activating Your Potential',
   description: 'Strategic HR, organizational development, and transformative solutions for organizations across Africa. 100+ years combined experience.',
   keywords: ['HR consulting', 'organizational development', 'talent management', 'Africa', 'business transformation'],
@@ -24,9 +26,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'PAC Africa | Activating Your Potential',
     description: 'Strategic HR, organizational development, and transformative solutions for organizations across Africa.',
-  },
-  verification: {
-    google: 'google-site-verification-code',
   },
 };
 
@@ -54,6 +53,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );

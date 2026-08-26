@@ -95,3 +95,21 @@ Done (this round):
 All 8 originally documented migration steps are now done.
 
 Each of these is a separate, reviewable change — tackle one at a time rather than a single sweeping PR.
+
+## Pre-launch audit (in progress)
+
+With content migration complete, the site needs a pass on what's still fabricated and what's technically missing before going live:
+
+Done:
+1. **Hero stats honesty** — "500+ Projects Delivered" and "50+ Clients Across Africa" had no backing data (unlike the real "100+ Years Combined Experience"), same issue as the partner logos/team bios. Removed both, kept only the real stat.
+2. **Legal pages** — `/privacy-policy` built from the real legacy Privacy Policy content (the PAC-specific version, ID 1270 in the dump — not the generic WordPress-boilerplate version at ID 3), spam-free as-is. `/terms-of-service` has no legacy source, so it's a generic drafted ToS with a visible on-page notice that it needs legal review before being considered final. Footer and the contact-form consent line now link to both real pages instead of `#`.
+3. **Technical SEO** — added `src/app/sitemap.ts` (all static routes + every insights/events slug), `src/app/robots.ts`, `src/app/icon.png` (cropped from the existing PAC logo mark), `src/app/opengraph-image.tsx` (generated social share card), and `metadataBase` on the root layout. Split every top-level page (`/`, `/about`, `/services`, `/contact`, `/insights`, `/events`) into a thin server-component `page.tsx` (exports per-page `metadata`) wrapping the existing client component (moved to `*Content.tsx` in the same folder) — previously all six inherited the identical root title/description because they were client components and couldn't export `metadata`. Removed the literal placeholder `google-site-verification-code` value.
+4. **Resilience** — added branded `src/app/not-found.tsx` and `src/app/error.tsx`.
+5. **Analytics** — installed `@vercel/analytics`, wired into root layout.
+
+Not yet done / flagged for later:
+6. **Lead notification gap** — the contact form writes straight to a Supabase `contact_submissions` table with no notification, so a submission can land silently. Needs a decision on channel (email/Slack) before building.
+
+Outstanding blockers only the client can resolve:
+- Real phone numbers — still the `+254/255/256 700 000 000` placeholder pattern across Header/Footer/contact page/ContactForm.
+- Confirm `NEXT_PUBLIC_SUPABASE_URL`/`NEXT_PUBLIC_SUPABASE_ANON_KEY` are set in the production hosting environment (not just local `.env.local`) and that the `contact_submissions` table exists — send a real test submission before launch.

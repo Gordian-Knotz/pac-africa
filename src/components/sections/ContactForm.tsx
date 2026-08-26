@@ -217,7 +217,7 @@ export function ContactForm({ className }: ContactFormProps) {
       </Button>
       
       <p className="text-sm text-muted-foreground text-center">
-        By submitting this form, you agree to our <a href="#" className="underline hover:text-primary">Privacy Policy</a> and <a href="#" className="underline hover:text-primary">Terms of Service</a>.
+        By submitting this form, you agree to our <a href="/privacy-policy" className="underline hover:text-primary">Privacy Policy</a> and <a href="/terms-of-service" className="underline hover:text-primary">Terms of Service</a>.
       </p>
     </form>
   );

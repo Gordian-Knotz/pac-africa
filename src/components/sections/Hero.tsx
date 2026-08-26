@@ -67,23 +67,13 @@ export function Hero({ className }: HeroProps) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.5 }}
-            className="mt-16 flex items-center justify-center gap-12 md:gap-20 text-center"
+            className="mt-16 flex items-center justify-center text-center"
             role="list"
             aria-label="Key statistics"
           >
             <div role="listitem">
               <div className="text-4xl md:text-5xl font-bold text-primary">100+</div>
               <div className="text-muted-foreground mt-1">Years Combined Experience</div>
-            </div>
-            <div className="hidden md:block w-px h-12 shadow-[var(--shadow-clay-inset)] rounded-full" aria-hidden="true" />
-            <div role="listitem">
-              <div className="text-4xl md:text-5xl font-bold text-primary">500+</div>
-              <div className="text-muted-foreground mt-1">Projects Delivered</div>
-            </div>
-            <div className="hidden md:block w-px h-12 shadow-[var(--shadow-clay-inset)] rounded-full" aria-hidden="true" />
-            <div role="listitem">
-              <div className="text-4xl md:text-5xl font-bold text-primary">50+</div>
-              <div className="text-muted-foreground mt-1">Clients Across Africa</div>
             </div>
           </motion.div>
         </div>

@@ -49,8 +49,8 @@ export function Footer() {
       { label: 'Events', href: '/events' },
       { label: 'Insights', href: '/insights' },
       { label: 'Careers', href: 'https://jobs.pac.africa' },
-      { label: 'Privacy Policy', href: '#' },
-      { label: 'Terms of Service', href: '#' },
+      { label: 'Privacy Policy', href: '/privacy-policy' },
+      { label: 'Terms of Service', href: '/terms-of-service' },
     ],
   };
   
