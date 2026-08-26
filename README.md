@@ -40,7 +40,7 @@ Used by `ContactForm` (`src/components/sections/ContactForm.tsx`) to insert subm
 
 ## Project structure
 
-- `src/app` — routes (`/`, `/about`, `/services`, `/insights`, `/insights/[slug]`, `/events`, `/events/[slug]`, `/contact`) and root layout
+- `src/app` — routes (`/`, `/about`, `/services`, `/insights`, `/insights/[slug]`, `/events`, `/events/[slug]`, `/contact`, `/privacy-policy`, `/terms-of-service`) and root layout. Each top-level page is a thin server `page.tsx` (exports `metadata`) wrapping a `*Content.tsx` client component in the same folder. Also includes `sitemap.ts`, `robots.ts`, `icon.png`, `opengraph-image.tsx`, `not-found.tsx`, and `error.tsx`.
 - `src/data` — static content data (`insights.ts` the real blog articles, `events.ts` the real workshops/certifications and speaker bios, both ported from the legacy site)
 - `src/components/layout` — `Header`, `ThemeProvider`, `ThemeToggle`
 - `src/components/sections` — page sections (`Hero`, `Footer`, `ContactForm`, `WhyChooseUs`, `CTASection`, cards)
